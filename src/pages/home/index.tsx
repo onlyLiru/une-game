@@ -10,11 +10,12 @@ function Home() {
   useEffect(() => {
     const res = getViewInfo();
     console.log(res);
+    console.log("env:", process.env.DB_PASS);
   }, []);
 
   console.log(user, isError, isLoading);
 
-  return <div>Home</div>;
+  return <div>Home env:{process.env.DB_PASS}</div>;
 }
 
 export default Home;

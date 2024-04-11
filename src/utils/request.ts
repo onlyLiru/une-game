@@ -117,7 +117,7 @@ export async function createRequest(
 
 // eslint-disable-next-line no-unused-vars
 const generatorRequest = <T>(
-  prefix = "/api/backend"
+  prefix = ""
 ): ((url: string, options?: RequestInit, extra?: any) => Promise<T>) => {
   return (url: string, options?: RequestInit, extra?: any) =>
     createRequest(`${prefix}${url}`, options || {}, extra);

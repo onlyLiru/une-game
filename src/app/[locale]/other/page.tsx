@@ -1,7 +1,10 @@
 import { useTranslations } from "next-intl";
+import { useTest } from "@/apiHooks/useTest";
 
 export default function Index() {
   const t = useTranslations("Index");
+  const { user, isError, isLoading } = useTest();
+  console.log(user, isError, isLoading);
 
   return (
     <>

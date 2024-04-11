@@ -1,9 +1,9 @@
 import useSWR from "swr";
-import { post as fetcher } from "@/utils/fetcher";
+import { get as fetcher } from "@/utils/fetcher";
 
 export function useUser(id: string | number) {
   const { data, error, isLoading } = useSWR(
-    "/api/market/v1/homepage/quality",
+    "/api/integral/v1/prize/all/info",
     (url: string) => fetcher({ url, data: { name: "li" } })
   );
 

@@ -8,7 +8,13 @@ export default function Index() {
     <h1>
       {t("title")}
       <Home />
-      {process.env.NEXT_PUBLIC_API_URL}
+      <div>
+        NEXT_PUBLIC_API_URL:{process.env.NEXT_PUBLIC_API_URL}
+        <h3>
+          NEXT_PUBLIC_VERCEL_CHAINID:{process.env.NEXT_PUBLIC_VERCEL_CHAINID}
+        </h3>
+        <h3>NEXT_PUBLIC_VERCEL_ENV:{process.env.NEXT_PUBLIC_VERCEL_ENV}</h3>
+      </div>
     </h1>
   );
 }

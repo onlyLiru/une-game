@@ -1,5 +1,5 @@
 import { useTranslations } from "next-intl";
-import Home from "@/pages/home";
+import Home from "@/components/home";
 
 export default function Index() {
   const t = useTranslations("Index");
@@ -8,13 +8,6 @@ export default function Index() {
     <h1>
       {t("title")}
       <Home />
-      <div>
-        NEXT_PUBLIC_API_URL:{process.env.NEXT_PUBLIC_API_URL}
-        <h3>
-          NEXT_PUBLIC_VERCEL_CHAINID:{process.env.NEXT_PUBLIC_VERCEL_CHAINID}
-        </h3>
-        <h3>NEXT_PUBLIC_VERCEL_ENV:{process.env.NEXT_PUBLIC_VERCEL_ENV}</h3>
-      </div>
     </h1>
   );
 }

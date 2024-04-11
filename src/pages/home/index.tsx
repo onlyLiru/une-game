@@ -2,10 +2,10 @@
 
 import { useEffect } from "react";
 import { getViewInfo } from "@/services/home";
-import { useUser } from "@/apiHooks/useUser";
+import { useTest } from "@/apiHooks/useTest";
 
 function Home() {
-  const { user, isError, isLoading } = useUser(1);
+  const { user, isError, isLoading } = useTest();
 
   useEffect(() => {
     // const res = getViewInfo();

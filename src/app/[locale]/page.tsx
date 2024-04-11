@@ -1,5 +1,5 @@
 import { useTranslations } from "next-intl";
-import Home from "@/components/home";
+import Home from "@/pages/home";
 
 export default function Index() {
   const t = useTranslations("Index");

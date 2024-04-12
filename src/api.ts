@@ -1,0 +1,1 @@
+export const testUrl = "/api/integral/v1/prize/all/info";

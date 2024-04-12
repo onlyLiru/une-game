@@ -1,1 +1,1 @@
-export const localesConf = ["zh", "en", "ja"];
+export const localesConf:string[] = ["zh", "en", "ja"];

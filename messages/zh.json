@@ -1,5 +1,8 @@
 {
-    "Index": {
-      "title": "中文Hello world!"
-    }
+  "Common": {
+    "name": "Common"
+  },
+  "Index": {
+    "title": "中文Hello world!"
   }
+}

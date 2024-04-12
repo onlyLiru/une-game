@@ -1,13 +1,22 @@
-"use client"
-
+"use client";
+import { useEffect } from "react";
+import { getTest } from "@/services/home";
 import { useTest } from "@/apiHooks/useTest";
+import { useTranslations } from "next-intl";
 
 function Page() {
+  const t = useTranslations("Index");
   const { user, isError, isLoading } = useTest();
   console.log(user, isError, isLoading);
 
+  useEffect(() => {
+    const res = getTest();
+    console.log(res);
+  }, []);
+
   return (
     <div>
+      <h3>{t("title")}</h3>
       <div>
         NEXT_PUBLIC_API_URL:{process.env.NEXT_PUBLIC_API_URL}
         <h3>

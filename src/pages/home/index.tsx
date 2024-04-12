@@ -1,20 +1,18 @@
 "use client";
-
-import { useEffect } from "react";
-import { getViewInfo } from "@/services/home";
 import { useTest } from "@/apiHooks/useTest";
+import { useTranslations } from "next-intl";
+import { useRouter } from "next/navigation";
 
 function Home() {
+  const t = useTranslations("Index");
   const { user, isError, isLoading } = useTest();
 
-  useEffect(() => {
-    // const res = getViewInfo();
-    // console.log(res);
-  }, []);
+  const router = useRouter();
+  console.log(router);
 
   console.log(user, isError, isLoading);
 
-  return <div>Home</div>;
+  return <div>Home ttt {t("title")} <button onClick={()=> {router.push('/other')}}>go to other</button></div>;
 }
 
 export default Home;

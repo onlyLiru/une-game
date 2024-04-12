@@ -2,11 +2,13 @@ import { useTranslations } from "next-intl";
 import Home from "@/pages/home";
 
 export default function Index() {
-  const t = useTranslations("Index");
+  const tIndex = useTranslations("Index");
+  const tCommon = useTranslations("Common");
 
   return (
     <h1>
-      {t("title")}
+      {tIndex("title")}
+      <p>{tCommon("name")}</p>
       <Home />
     </h1>
   );

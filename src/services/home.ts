@@ -1,5 +1,6 @@
-import request from '@/utils/request';
-import { stringify } from 'querystring';
+import request from "@/utils/request";
+import { stringify } from "querystring";
+import { testUrl } from "@/api";
 
 export declare namespace ApiHome {
   export interface getViewInfo {
@@ -50,10 +51,15 @@ export declare namespace ApiHome {
   }
 }
 
+export function getTest() {
+  return request(testUrl, {
+    method: "get",
+  });
+}
 /** 获取首页展示数据 */
 export function getViewInfo() {
-  return request<{ data: ApiHome.getViewInfo }>('/api/getViewInfo', {
-    method: 'POST',
+  return request<{ data: ApiHome.getViewInfo }>("/api/getViewInfo", {
+    method: "POST",
   });
 }
 
@@ -62,27 +68,27 @@ export function geBannerList(data = {}) {
   return request<{ data: any }>(
     `/api/market/v1/homepage/banner?${stringify(data)}`,
     {
-      method: 'GET',
-    },
+      method: "GET",
+    }
   );
 }
 
 /** 获取首页精选项目 */
 export function getQualityList() {
-  return request<{ data: any }>('/api/market/v1/homepage/quality', {
-    method: 'GET',
+  return request<{ data: any }>("/api/market/v1/homepage/quality", {
+    method: "GET",
   });
 }
 export function getAllInfo() {
-  return request<{ data: any }>('/api/integral/v1/score/all/info', {
-    method: 'GET',
+  return request<{ data: any }>("/api/integral/v1/score/all/info", {
+    method: "GET",
   });
 }
 
 /** 获取首页NFT合辑 */
 export function getCollectionsList(data: any) {
-  return request<{ data: any }>('/api/market/v1/homepage/collections/list', {
-    method: 'POST',
+  return request<{ data: any }>("/api/market/v1/homepage/collections/list", {
+    method: "POST",
     body: data,
   }).then((res) => {
     return res?.data?.collections_list || [];
@@ -94,15 +100,15 @@ export function getResearchList(data: any) {
   return request<{ data: any }>(
     `/api/market/v1/homepage/news?${stringify(data)}`,
     {
-      method: 'GET',
-    },
+      method: "GET",
+    }
   );
 }
 
 /** 获取首页底部seo文章 */
 export function getSeoArticleList() {
-  return request('/api/project/v1/wp/list', {
-    method: 'GET',
+  return request("/api/project/v1/wp/list", {
+    method: "GET",
   });
 }
 

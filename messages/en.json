@@ -1,5 +1,8 @@
 {
-    "Index": {
-      "title": "Hello world!"
-    }
+  "Common": {
+    "name": "Common"
+  },
+  "Index": {
+    "title": "Hello world!"
   }
+}

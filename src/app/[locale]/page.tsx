@@ -1,5 +1,5 @@
 import { useTranslations } from "next-intl";
-import Home from "@/pages/home";
+import Home from "@/app/HomeContent";
 import { Link } from "@/utils/navigation";
 
 export default function Index() {

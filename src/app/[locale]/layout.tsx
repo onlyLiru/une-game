@@ -14,25 +14,16 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
   params: { locale },
-  timeZone,
-  now,
 }: Readonly<{
   children: React.ReactNode;
   params: { locale: string };
-  timeZone: any;
-  now: any;
 }>) {
   const messages = useMessages();
 
   return (
     <html lang={locale}>
       <body className={inter.className}>
-        <NextIntlClientProvider
-          locale={locale}
-          timeZone={timeZone}
-          now={now}
-          messages={messages}
-        >
+        <NextIntlClientProvider locale={locale} messages={messages}>
           <SWRProvider>{children}</SWRProvider>
         </NextIntlClientProvider>
       </body>

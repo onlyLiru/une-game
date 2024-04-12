@@ -1,17 +1,19 @@
 "use client";
 import { useEffect } from "react";
 import { getTest } from "@/services/home";
-import { useTest } from "@/apiHooks/useTest";
+import { useTest, useTestPost } from "@/apiHooks/useTest";
 import { useTranslations } from "next-intl";
 
 function Page() {
   const t = useTranslations("Index");
-  const { user, isError, isLoading } = useTest();
+  // const { user, isError, isLoading } = useTest();
+  // console.log(user, isError, isLoading);
+  const { user, isError, isLoading } = useTestPost();
   console.log(user, isError, isLoading);
 
   useEffect(() => {
-    const res = getTest();
-    console.log(res);
+    // const res = getTest();
+    // console.log(res);
   }, []);
 
   return (

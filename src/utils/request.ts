@@ -47,7 +47,7 @@ export class FetchError extends Error {
 
 type RequestOptionsType = Omit<RequestInit, "body"> & { body?: any };
 
-export async function createRequest(
+export async function CreateRequest(
   url: string,
   options: RequestInit,
   extra?: any
@@ -86,7 +86,15 @@ export async function createRequest(
     let data: any;
     try {
       data = await response.json();
-    } catch {
+    } catch (error) {
+      if (response.status === 401) {
+        console.log(response.status);
+        jwtHelper.clearToken();
+        setTimeout(() => {
+          //to do
+          // window.location.href = "https://www.baidu.com";
+        }, 800);
+      }
       throw new FetchError({
         message: response.statusText,
         response,
@@ -120,7 +128,7 @@ const generatorRequest = <T>(
   prefix = ""
 ): ((url: string, options?: RequestInit, extra?: any) => Promise<T>) => {
   return (url: string, options?: RequestInit, extra?: any) =>
-    createRequest(`${prefix}${url}`, options || {}, extra);
+    CreateRequest(`${prefix}${url}`, options || {}, extra);
 };
 
 // client side main request
@@ -128,12 +136,5 @@ const request: <T = any>(
   url: string,
   options?: RequestOptionsType
 ) => Promise<T> = generatorRequest();
-
-// client side main request
-export const requestV1: <T = any>(
-  url: string,
-  options?: RequestOptionsType,
-  extra?: any
-) => Promise<{ code: number; msg: string; data: T }> = generatorRequest();
 
 export default request;

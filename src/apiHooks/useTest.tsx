@@ -1,10 +1,22 @@
 import useSWR from "swr";
-import { get as fetcher } from "@/utils/fetcher";
-import { testUrl } from "@/api";
+import { get, post } from "@/utils/fetcher";
+import { testUrl, testPostUrl } from "@/api";
 
 export function useTest() {
   const { data, error, isLoading } = useSWR(testUrl, (url: string) =>
-    fetcher({ url, data: { name: "li" } })
+    get({ url, data: { name: "li" } })
+  );
+
+  return {
+    user: data,
+    isLoading,
+    isError: error,
+  };
+}
+
+export function useTestPost() {
+  const { data, error, isLoading } = useSWR(testPostUrl, (url: string) =>
+    get({ url, data: { name: "li" } })
   );
 
   return {

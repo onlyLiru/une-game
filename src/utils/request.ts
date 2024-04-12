@@ -1,4 +1,4 @@
-import { NEXT_LOCALE_KEY } from "@/const/cookie";
+import { NEXT_LOCALE_KEY, NEXT_LOCALE_COOKIE_KEY } from "@/const/cookie";
 import { getCookie } from "cookies-next";
 import { RequestInit } from "next/dist/server/web/spec-extension/request";
 import { getServerUrl } from "./getBaseUrl";
@@ -61,7 +61,7 @@ export async function createRequest(
 
   (opts.headers as any)["Content-Type"] = "application/json; charset=utf-8";
 
-  const localParam = getCookie(NEXT_LOCALE_KEY);
+  const localParam = getCookie(NEXT_LOCALE_COOKIE_KEY);
 
   const locale = (opts.headers as any)[NEXT_LOCALE_KEY];
   if (!locale) (opts.headers as any)[NEXT_LOCALE_KEY] = localParam || "en";

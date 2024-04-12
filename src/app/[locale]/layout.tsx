@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { NextIntlClientProvider, useMessages } from "next-intl";
 import { Inter } from "next/font/google";
-import { SWRProvider } from "./SWRProvider";
+import { SWRProvider } from "./SWRProviderCom";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });

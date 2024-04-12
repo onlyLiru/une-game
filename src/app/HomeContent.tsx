@@ -12,7 +12,18 @@ function Home() {
 
   console.log(user, isError, isLoading);
 
-  return <div>Home ttt {t("title")} <button onClick={()=> {router.push('/other')}}>go to other</button></div>;
+  return (
+    <div>
+      Home ttt {t("title")}{" "}
+      <button
+        onClick={() => {
+          router.push("/example");
+        }}
+      >
+        go to example
+      </button>
+    </div>
+  );
 }
 
 export default Home;

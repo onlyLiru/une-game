@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { NextIntlClientProvider, useMessages } from "next-intl";
 import { Inter } from "next/font/google";
 import { SWRProvider } from "./SWRProviderCom";
+import RecoilProvider from "./RecoilProvider";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -24,7 +25,9 @@ export default function RootLayout({
     <html lang={locale}>
       <body className={inter.className}>
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <SWRProvider>{children}</SWRProvider>
+          <RecoilProvider>
+            <SWRProvider>{children}</SWRProvider>
+          </RecoilProvider>
         </NextIntlClientProvider>
       </body>
     </html>

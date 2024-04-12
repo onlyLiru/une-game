@@ -16,6 +16,7 @@
     "next-intl": "^3.11.1",
     "react": "^18",
     "react-dom": "^18",
+    "recoil": "^0.7.7",
     "swr": "^2.2.5"
   },
   "devDependencies": {

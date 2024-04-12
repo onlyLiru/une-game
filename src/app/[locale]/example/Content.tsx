@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { getTest } from "@/services/home";
 import { useTest, useTestPost } from "@/apiHooks/useTest";
 import { useTranslations } from "next-intl";
+import RecoilExample from "./RecoilExample";
 
 function Page() {
   const t = useTranslations("Index");
@@ -25,6 +26,7 @@ function Page() {
           NEXT_PUBLIC_VERCEL_CHAINID:{process.env.NEXT_PUBLIC_VERCEL_CHAINID}
         </h3>
         <h3>NEXT_PUBLIC_VERCEL_ENV:{process.env.NEXT_PUBLIC_VERCEL_ENV}</h3>
+        <RecoilExample />
       </div>
     </div>
   );

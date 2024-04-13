@@ -3,6 +3,8 @@ import { NextIntlClientProvider, useMessages } from "next-intl";
 import { Inter } from "next/font/google";
 import { SWRProvider } from "./SWRProviderCom";
 import RecoilProvider from "./RecoilProvider";
+import { ChakraProvider } from "@chakra-ui/react";
+
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -26,7 +28,9 @@ export default function RootLayout({
       <body className={inter.className}>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <RecoilProvider>
-            <SWRProvider>{children}</SWRProvider>
+            <ChakraProvider>
+              <SWRProvider>{children}</SWRProvider>
+            </ChakraProvider>
           </RecoilProvider>
         </NextIntlClientProvider>
       </body>

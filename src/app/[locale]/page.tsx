@@ -1,6 +1,7 @@
 import { useTranslations } from "next-intl";
 import Home from "@/app/HomeContent";
-import { Link } from "@/utils/navigation";
+// import { Link } from "@/utils/navigation";
+import { Link, Button } from "@chakra-ui/react";
 
 export default function Index() {
   const tIndex = useTranslations("Index");
@@ -10,9 +11,11 @@ export default function Index() {
     <h1>
       {tIndex("title")}
       <p>{tCommon("name")}</p>
-      <Link href="/test" locale="zh">
-        测试页面
-      </Link>
+      <Button>
+        <Link href="/test" color="blue.400" _hover={{ color: "blue.500" }}>
+          测试页面
+        </Link>
+      </Button>
       <Home />
     </h1>
   );

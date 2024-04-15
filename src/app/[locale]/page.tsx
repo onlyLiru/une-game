@@ -1,5 +1,5 @@
 import { useTranslations } from "next-intl";
-import Home from "@/app/HomeContent";
+import Home from "./HomeContent";
 // import { Link } from "@/utils/navigation";
 import { Link, Button } from "@chakra-ui/react";
 

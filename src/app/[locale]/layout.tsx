@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import { SWRProvider } from "../SWRProviderCom";
 import RecoilProvider from "../RecoilProvider";
 import { ChakraProvider } from "@chakra-ui/react";
+import { App as RainbowkitProvider } from "../RainbowKitProvider";
 
 import "../globals.css";
 
@@ -29,7 +30,9 @@ export default function RootLayout({
         <NextIntlClientProvider locale={locale} messages={messages}>
           <RecoilProvider>
             <ChakraProvider>
-              <SWRProvider>{children}</SWRProvider>
+              <SWRProvider>
+                <RainbowkitProvider>{children}</RainbowkitProvider>
+              </SWRProvider>
             </ChakraProvider>
           </RecoilProvider>
         </NextIntlClientProvider>

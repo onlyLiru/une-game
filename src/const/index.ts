@@ -1,1 +1,2 @@
-export const localesConf:string[] = ["zh", "en", "ja"];
+export * from "./env";
+export const localesConf: string[] = ["zh", "en", "ja"];

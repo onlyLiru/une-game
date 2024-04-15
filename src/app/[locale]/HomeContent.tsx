@@ -12,7 +12,6 @@ function Home() {
 
   const router = useRouter();
 
-  console.log(user, isError, isLoading);
 
   if (!isLocal) {
     redirect("/events/game");

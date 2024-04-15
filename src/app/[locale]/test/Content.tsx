@@ -10,7 +10,6 @@ function Content() {
     setTodo(["change", "after alter data"]);
   }, []);
 
-  console.log(todo);
 
   return <div>Content</div>;
 }

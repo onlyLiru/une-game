@@ -5,7 +5,7 @@ import { Button, Link } from "@chakra-ui/react";
 function Content() {
   const pathName = usePathname();
   const router = useRouter();
-  console.log(pathName, router);
+  
   return (
     <div>
       <h2>Not Found {pathName}</h2>

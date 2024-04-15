@@ -10,13 +10,10 @@ import Wagmi from "./Wagmi";
 function Page() {
   const t = useTranslations("Index");
   // const { user, isError, isLoading } = useTest();
-  // console.log(user, isError, isLoading);
   const { user, isError, isLoading } = useTestPost();
-  console.log(user, isError, isLoading);
 
   useEffect(() => {
     // const res = getTest();
-    // console.log(res);
   }, []);
 
   return (

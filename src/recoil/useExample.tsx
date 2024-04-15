@@ -7,7 +7,6 @@ export const todoListState = atom({
 
 function useExample() {
   const [todo, setTodo] = useRecoilState(todoListState);
-  console.log("recoilState:", todo);
 
   return {
     todo,

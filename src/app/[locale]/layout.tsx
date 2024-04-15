@@ -31,7 +31,9 @@ export default function RootLayout({
           <RecoilProvider>
             <ChakraProvider>
               <SWRProvider>
-                <RainbowkitProvider>{children}</RainbowkitProvider>
+                <RainbowkitProvider locale={locale}>
+                  {children}
+                </RainbowkitProvider>
               </SWRProvider>
             </ChakraProvider>
           </RecoilProvider>

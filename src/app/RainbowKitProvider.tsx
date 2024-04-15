@@ -3,6 +3,7 @@
 import "@rainbow-me/rainbowkit/styles.css";
 import React, { ReactNode } from "react";
 import { getDefaultConfig, RainbowKitProvider } from "@rainbow-me/rainbowkit";
+import type { Locale } from "@rainbow-me/rainbowkit";
 import { WagmiProvider } from "wagmi";
 import { mainnet, polygon, optimism, arbitrum, base, zora } from "wagmi/chains";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
@@ -16,11 +17,17 @@ const config = getDefaultConfig({
 
 const queryClient = new QueryClient();
 
-export const App = ({ children }: { children: ReactNode }) => {
+export const App = ({
+  children,
+  locale,
+}: {
+  children: ReactNode;
+  locale: any;
+}) => {
   return (
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
-        <RainbowKitProvider>{children}</RainbowKitProvider>
+        <RainbowKitProvider locale={locale}>{children}</RainbowKitProvider>
       </QueryClientProvider>
     </WagmiProvider>
   );

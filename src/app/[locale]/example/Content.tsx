@@ -5,6 +5,7 @@ import { useTest, useTestPost } from "@/apiHooks/useTest";
 import { useTranslations } from "next-intl";
 import RecoilExample from "./RecoilExample";
 import Rainbowkit from "./Rainbowkit";
+import Wagmi from "./Wagmi";
 
 function Page() {
   const t = useTranslations("Index");
@@ -29,6 +30,7 @@ function Page() {
         <h3>NEXT_PUBLIC_VERCEL_ENV:{process.env.NEXT_PUBLIC_VERCEL_ENV}</h3>
         <RecoilExample />
         <Rainbowkit />
+        <Wagmi />
       </div>
     </div>
   );

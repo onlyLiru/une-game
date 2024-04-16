@@ -13,11 +13,12 @@ import {
   useDisclosure,
   Image,
 } from "@chakra-ui/react";
+import { useTranslations } from "next-intl";
 import EmailLoginStep1 from "./EmailLoginStep1";
 import EmailLoginStep2 from "./EmailLoginStep2";
 
 function LoginModal() {
-  const [curStep, setStep] = useState(1);
+  const t = useTranslations("Web2Login");
   const { isOpen, onOpen, onClose } = useDisclosure();
   const cancelRef = React.useRef<any>();
 
@@ -26,7 +27,8 @@ function LoginModal() {
       <Image
         className="flex-1"
         src="https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events%2Fgame%2F20240415-145856.png"
-        w="6rem"
+        w="auto"
+        h="4rem"
         alt="login"
         onClick={onOpen}
       />
@@ -41,11 +43,11 @@ function LoginModal() {
         <AlertDialogOverlay>
           <AlertDialogContent>
             <AlertDialogHeader fontSize="lg" fontWeight="bold">
-              Email Login
+              {t("title")}
             </AlertDialogHeader>
             <AlertDialogCloseButton />
             <AlertDialogBody>
-              {curStep === 1 ? <EmailLoginStep1 /> : <EmailLoginStep2 />}
+              <EmailLoginStep1 onClose={onClose} />
             </AlertDialogBody>
           </AlertDialogContent>
         </AlertDialogOverlay>

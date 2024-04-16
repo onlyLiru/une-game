@@ -1,7 +1,9 @@
-import React from "react";
+import React from 'react'
 
 function EmailLoginStep2() {
-  return <div>EmailLoginStep2</div>;
+  return (
+    <div>EmailLoginStep2</div>
+  )
 }
 
-export default EmailLoginStep2;
+export default EmailLoginStep2

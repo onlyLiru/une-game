@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import {
   AlertDialog,
   AlertDialogBody,
@@ -13,8 +13,11 @@ import {
   useDisclosure,
   Image,
 } from "@chakra-ui/react";
+import EmailLoginStep1 from "./EmailLoginStep1";
+import EmailLoginStep2 from "./EmailLoginStep2";
 
 function LoginModal() {
+  const [curStep, setStep] = useState(1);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const cancelRef = React.useRef<any>();
 
@@ -42,7 +45,7 @@ function LoginModal() {
             </AlertDialogHeader>
             <AlertDialogCloseButton />
             <AlertDialogBody>
-              Are you sure? You can not undo this action afterwards.
+              {curStep === 1 ? <EmailLoginStep1 /> : <EmailLoginStep2 />}
             </AlertDialogBody>
           </AlertDialogContent>
         </AlertDialogOverlay>

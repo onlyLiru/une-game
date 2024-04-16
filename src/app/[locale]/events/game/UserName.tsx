@@ -8,9 +8,11 @@ import {
   Avatar,
 } from "@chakra-ui/react";
 import useUsreInfo from "@/recoil/useUserInfo";
+import useLogout from "@/hooks/useLogout";
 
 function UserName() {
   const { userInfo } = useUsreInfo();
+  const { clearLoginData } = useLogout();
 
   return (
     <>
@@ -81,6 +83,7 @@ function UserName() {
                   w="7rem"
                   h="auto"
                   alt="login"
+                  onClick={clearLoginData}
                 />
               </div>
             </main>

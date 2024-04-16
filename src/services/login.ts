@@ -1,4 +1,5 @@
 import request from "@/utils/request";
+import { jwtHelper } from "@/utils/jwt";
 import { sendEmailValidCode, emailLoginApiPath, userInfoApiPath } from "@/api";
 
 export function getEmailValidCode(email: string) {
@@ -16,5 +17,7 @@ export function loginWithEmailSerices(data: { email: string; code: number }) {
 }
 
 export function getUserInfo() {
+  const token = jwtHelper.getToken();
+  if (!token) return Promise.resolve();
   return request(userInfoApiPath);
 }

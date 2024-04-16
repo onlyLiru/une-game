@@ -13,14 +13,24 @@ function Header() {
   const isLogin = userInfo && (userInfo as any)?.login_email;
 
   useEffect(() => {
-    fetchUser();
+    !isLogin && !loading && fetchUser();
   }, []);
   console.log("userInfo:", userInfo);
   return (
     <>
       <header className="fixed top-0 left-0 right-0 flex justify-end px-[4rem] py-[2rem]">
         <section className="flex cursor-pointer">
-          {loading ? <>loading</> : <>{isLogin ? <UserName /> : <Login />}</>}
+          {loading ? (
+            <Image
+              className="flex-1"
+              src="https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events%2Fgame%2F20240416-105831.png"
+              h="4rem"
+              w="auto"
+              alt="login"
+            />
+          ) : (
+            <>{isLogin ? <UserName /> : <Login />}</>
+          )}
           <Image
             className="flex-1"
             src="https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events%2Fgame%2F20240415-145913.png"

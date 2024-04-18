@@ -1,4 +1,5 @@
-import React from 'react'
+"use client";
+import { useState, useMemo, useRef, useEffect } from 'react';
 import {
   Box,
   Text,
@@ -17,13 +18,114 @@ import {
   ModalCloseButton,
   Modal,
   Tooltip,
+  Progress,
   Link,
 } from '@chakra-ui/react';
 
 function page() {
+
+  const [page, setPage] = useState<any>(1);
+  const [ProgressBar, updateProgressBar] = useState<any>(0);
+
+  function countTo100InThreeSeconds() {
+    let currentNumber = 1;
+    const targetNumber = 100;
+    const duration = 3000; // 3 seconds
+    const interval = duration / (targetNumber - currentNumber);
+
+    const timer = setInterval(() => {
+      if (currentNumber >= targetNumber) {
+        clearInterval(timer);
+        setTimeout(() => {
+          setPage(3)
+        }, 1000);
+      } else {
+        currentNumber++;
+        updateProgressBar(currentNumber); // 可以替换为其他操作
+      }
+    }, interval);
+  }
+  useEffect(() => {
+    if (page === 1) {
+      setTimeout(() => {
+        setPage(2)
+      }, 1000);
+    }else if (page === 2) {
+      countTo100InThreeSeconds();
+    }else {
+
+    }
+  }, [page]);
   return (
     <Box>
-      <Box
+      {page === 1 && <Box
+        bg='#1a1a1a'
+        w='100%'
+        h='100vh'
+        display={'flex'}
+        justifyContent={'center'}
+        alignItems={'center'}
+      >
+        <Image
+          src='https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events/game/Frame%20198.png'
+        ></Image>
+      </Box>}
+      {page === 2 && <Box
+        bgImg={'https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events/game/Rectangle%2018.png'}
+        bgRepeat="no-repeat"
+        bgSize="100% 100%"
+        bgPos="center"
+        w='100%'
+        h='100vh'
+        overflow={'hidden'}
+        color={'#fff'}
+      >
+        <Image
+          src='https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events/game/Group%20207.png'
+          w={'100%'}
+          pos={'absolute'}
+          top={'0'}
+        ></Image>
+        <Image
+          src='https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events/game/Frame%20163307.png'
+          w={'100%'}
+          // pos={'absolute'}
+          mt={'14%'}
+        ></Image>
+        <Box textAlign={'center'} mt={'2%'}>Connecting to server...</Box>
+        <Box
+          w={'80%'}
+          bgImg={'https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events/game/Mask%20group.png'}
+          bgRepeat="no-repeat"
+          bgSize="100% 100%"
+          bgPos="center"
+          h={'30px'}
+          backgroundColor={'#3e3e3e'}
+          border={'1px solid #000'}
+          m={'0 auto'}
+          mt={'1%'}
+        >
+          <Box
+            w={`${ProgressBar}%`}
+            bgImg={'https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events/game/Mask%20group%20%281%29.png'}
+            bgRepeat="no-repeat"
+            bgSize="100% 100%"
+            bgPos="center"
+            h={'100%'}
+            transition={'all .1s linear'}
+            pos={'relative'}
+          >
+            <Box pos={'absolute'} right={'20px'}>{`${ProgressBar}%`}</Box>
+          </Box>
+        </Box>
+        <Image
+          src='https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events/game/Group%20208.png'
+          w={'100%'}
+          pos={'absolute'}
+          bottom={'0'}
+        ></Image>
+      </Box>}
+      {page === 3 && <Box
         bgImg={'https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events/game/gameBg.png'}
         bgRepeat="no-repeat"
         bgSize="100% 100%"
@@ -32,6 +134,9 @@ function page() {
         h='100vh'
         pt='80px'
         pb='80px'
+        color='#fff'
+        // fontSize={'30px'} 
+        fontFamily={'Lantinghei'}
       >
         <Box w='80%' h='100%' m={'0 auto'} display={'flex'} color='#fff'>
           <Box w='62%'>
@@ -112,8 +217,11 @@ function page() {
               h='62px'
               m='0 auto'
               mt='20px'
+              display='flex'
+              justifyContent={'center'}
+              alignItems={"center"}
             >
-
+              PLAY
             </Box>
           </Box>
 
@@ -337,7 +445,8 @@ function page() {
             </Box>
           </Box>
         </Box>
-      </Box>
+      </Box>}
+
     </Box>
   )
 }

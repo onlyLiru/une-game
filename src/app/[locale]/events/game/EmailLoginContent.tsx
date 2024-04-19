@@ -14,7 +14,7 @@ import { getEmailValidCode, loginWithEmailSerices } from "@/services/user";
 import { jwtHelper } from "@/utils/jwt";
 import { useFetchUser } from "@/apiHooks/useFetchUser";
 
-function EmailLoginStep1({ onClose }: { onClose: any }) {
+function EmailLoginContent({ onClose }: { onClose: any }) {
   const t = useTranslations("Web2Login");
   const [showEmailFormatError, setShowEmailFormatError] = useState(false);
   const [email, setEmail] = React.useState(
@@ -241,4 +241,4 @@ function EmailLoginStep1({ onClose }: { onClose: any }) {
   );
 }
 
-export default EmailLoginStep1;
+export default EmailLoginContent;

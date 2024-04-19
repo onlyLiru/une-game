@@ -15,8 +15,7 @@ import {
 } from "@chakra-ui/react";
 import { useTranslations } from "next-intl";
 import useIsShowLoginModal from "@/recoil/useIsShowLoginModal";
-import EmailLoginStep1 from "./EmailLoginStep1";
-import EmailLoginStep2 from "./EmailLoginStep2";
+import EmailLoginContent from "./EmailLoginContent";
 
 function LoginModal({ children }: { children?: ReactNode }) {
   const t = useTranslations("Web2Login");
@@ -63,7 +62,7 @@ function LoginModal({ children }: { children?: ReactNode }) {
             </AlertDialogHeader>
             {!show && <AlertDialogCloseButton />}
             <AlertDialogBody>
-              <EmailLoginStep1 onClose={onClose} />
+              <EmailLoginContent onClose={onClose} />
             </AlertDialogBody>
           </AlertDialogContent>
         </AlertDialogOverlay>

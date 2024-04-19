@@ -8,6 +8,7 @@ import { useFetchUser } from "@/apiHooks/useFetchUser";
 import useUsreInfo from "@/recoil/useUserInfo";
 import { usePathname } from "next/navigation";
 import classnames from "classnames";
+import Link from "next/link";
 
 function Header() {
   const regex = /events\/game\/play$/;
@@ -45,13 +46,15 @@ function Header() {
           ) : (
             <>{isLogin ? <UserName /> : <Login />}</>
           )}
-          <Image
-            className="flex-1"
-            src="https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events%2Fgame%2F20240415-145913.png"
-            h={{ md: "4rem", base: "3rem" }}
-            w="auto"
-            alt="login"
-          />
+          <Link href="/events/fit">
+            <Image
+              className="flex-1"
+              src="https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events%2Fgame%2F20240415-145913.png"
+              h={{ md: "4rem", base: "3rem" }}
+              w="auto"
+              alt="login"
+            />
+          </Link>
         </section>
       </header>
     </>

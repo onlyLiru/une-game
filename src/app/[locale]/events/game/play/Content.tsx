@@ -11,7 +11,7 @@ function Content() {
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
   useEffect(() => {
-    setShow(!isLogin);
+    // setShow(!isLogin);
   }, [isLogin, setShow]);
 
   useEffect(() => {

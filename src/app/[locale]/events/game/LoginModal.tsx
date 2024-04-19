@@ -26,7 +26,7 @@ function LoginModal() {
 
   useEffect(() => {
     show && onOpen();
-  }, [show]);
+  }, [show, onOpen]);
 
   return (
     <>

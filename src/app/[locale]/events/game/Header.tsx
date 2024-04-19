@@ -27,7 +27,7 @@ function Header() {
     <>
       <header
         className={classnames([
-          "fixed top-0 left-0 right-0 flex justify-end md:px-[4rem] px-2 py-[2rem]",
+          "fixed z-0 top-0 left-0 right-0 flex justify-end md:px-[4rem] px-2 py-[2rem]",
         ])}
         style={{
           top: isPlayPage ? "-19rem" : "0",

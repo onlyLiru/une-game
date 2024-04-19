@@ -31,10 +31,12 @@ export const userInfoState = atom({
 
 function useUsreInfo() {
   const [userInfo, setInfo] = useRecoilState(userInfoState);
+  const isLogin = !!(userInfo && (userInfo as any)?.login_email);
 
   return {
     userInfo,
     setInfo,
+    isLogin,
   };
 }
 

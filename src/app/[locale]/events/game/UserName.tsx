@@ -27,7 +27,7 @@ function UserName() {
             <Image
               className="flex-1"
               src="https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events%2Fgame%2F20240416-105831.png"
-              h="4rem"
+              h={{ md: "4rem", base: "3rem" }}
               w="auto"
               alt="login"
             />
@@ -35,11 +35,11 @@ function UserName() {
               <Avatar
                 name="Dan Abrahmov"
                 src={userInfo.profile_image}
-                size="sm"
+                size={{ md: "sm", base: "xs" }}
                 transform={"skewX(-12deg)"}
                 borderRadius="0"
-                border="3px solid #fff"
-                boxShadow="3px 3px black"
+                border={{ md: "3px solid #fff", base: "2px solid #fff" }}
+                boxShadow={{ md: "3px 3px black", base: "2px 2px black" }}
               />
               <span className="flex-1 overflow-hidden text-ellipsis whitespace-nowrap text-white">
                 {userInfo.username}

@@ -6,25 +6,39 @@ import UserName from "./UserName";
 import { Image } from "@chakra-ui/react";
 import { useFetchUser } from "@/apiHooks/useFetchUser";
 import useUsreInfo from "@/recoil/useUserInfo";
+import { usePathname } from "next/navigation";
+import classnames from "classnames";
 
 function Header() {
+  const regex = /events\/game\/play$/;
+  const pathname = usePathname();
   const { fetchUser, loading } = useFetchUser();
-  const { userInfo } = useUsreInfo();
-  const isLogin = userInfo && (userInfo as any)?.login_email;
+  const { userInfo, isLogin } = useUsreInfo();
+
+  const isPlayPage = regex.test(pathname);
 
   useEffect(() => {
     !isLogin && !loading && fetchUser();
-  }, []);
+  }, [fetchUser, isLogin, loading]);
+
   console.log("userInfo:", userInfo);
+
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 flex justify-end px-[4rem] py-[2rem]">
+      <header
+        className={classnames([
+          "fixed top-0 left-0 right-0 flex justify-end md:px-[4rem] px-2 py-[2rem]",
+        ])}
+        style={{
+          top: isPlayPage ? "-19rem" : "0",
+        }}
+      >
         <section className="flex cursor-pointer">
           {loading ? (
             <Image
               className="flex-1"
               src="https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events%2Fgame%2F20240416-105831.png"
-              h="4rem"
+              h={{ md: "4rem", base: "3rem" }}
               w="auto"
               alt="login"
             />
@@ -34,7 +48,7 @@ function Header() {
           <Image
             className="flex-1"
             src="https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events%2Fgame%2F20240415-145913.png"
-            h="4rem"
+            h={{ md: "4rem", base: "3rem" }}
             w="auto"
             alt="login"
           />

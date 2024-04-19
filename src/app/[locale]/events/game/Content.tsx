@@ -21,12 +21,17 @@ import {
     Progress,
     Link,
 } from '@chakra-ui/react';
+import useUsreInfo from "@/recoil/useUserInfo";
+import useIsShowLoginModal from "@/recoil/useIsShowLoginModal";
+import { useRouter, redirect } from "next/navigation";
 
 function Page() {
 
+    const { isLogin } = useUsreInfo();
+    const { show, setShow } = useIsShowLoginModal();
     const [page, setPage] = useState<any>(1);
     const [ProgressBar, updateProgressBar] = useState<any>(0);
-
+    const router = useRouter();
     function countTo100InThreeSeconds() {
         let currentNumber = 1;
         const targetNumber = 100;
@@ -44,6 +49,14 @@ function Page() {
                 updateProgressBar(currentNumber); // 可以替换为其他操作
             }
         }, interval);
+    }
+    const goPlay = () => {
+        console.log(isLogin)
+        if (!isLogin) {
+            setShow(!isLogin);
+        }else {
+            router.push('/events/game/play');
+        }
     }
     useEffect(() => {
         if (page === 1) {
@@ -220,6 +233,7 @@ function Page() {
                             display='flex'
                             justifyContent={'center'}
                             alignItems={"center"}
+                            onClick={goPlay}
                         >
                             PLAY
                         </Box>

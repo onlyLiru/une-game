@@ -11,7 +11,7 @@ function Content() {
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
   useEffect(() => {
-    // setShow(!isLogin);
+    setShow(!isLogin);
   }, [isLogin, setShow]);
 
   useEffect(() => {
@@ -20,7 +20,6 @@ function Content() {
       console.log("Received message from iframe:", event.data);
       if (!isNaN(event.data.message)) {
         saveUserScore(event.data.message);
-        alert(event.data.message);
       }
     };
 

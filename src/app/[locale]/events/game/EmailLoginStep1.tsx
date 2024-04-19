@@ -17,7 +17,9 @@ import { useFetchUser } from "@/apiHooks/useFetchUser";
 function EmailLoginStep1({ onClose }: { onClose: any }) {
   const t = useTranslations("Web2Login");
   const [showEmailFormatError, setShowEmailFormatError] = useState(false);
-  const [email, setEmail] = React.useState("");
+  const [email, setEmail] = React.useState(
+    localStorage.getItem("UserEmail") || ""
+  );
   const [step, setStep] = useState(1);
   const [emailErrorText, setEmailErrorText] = useState("");
   const [buttonLoading, setButtonLoading] = useState(false);
@@ -75,12 +77,8 @@ function EmailLoginStep1({ onClose }: { onClose: any }) {
       code: Number(code),
     })
       .then(async ({ data }) => {
-        jwtHelper.setEmail(email, {
-          expires: new Date(+data.accessExpire * 1000),
-        });
-        jwtHelper.setToken(data.accessToken, {
-          expires: new Date(+data.accessExpire * 1000),
-        });
+        jwtHelper.setEmail(email);
+        jwtHelper.setToken(data.token);
         await fetchUser();
         // 登陆成功后把邮箱在本地缓存一份，用于下次登陆时回填
         window.localStorage.setItem("UserEmail", email);

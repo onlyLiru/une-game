@@ -34,7 +34,7 @@ function UserName() {
             <header className="flex items-center gap-2 absolute top-0 left-4 right-5 bottom-2">
               <Avatar
                 name="Dan Abrahmov"
-                src={userInfo.profile_image}
+                src={userInfo.avatar}
                 size={{ md: "sm", base: "xs" }}
                 transform={"skewX(-12deg)"}
                 borderRadius="0"
@@ -42,7 +42,7 @@ function UserName() {
                 boxShadow={{ md: "3px 3px black", base: "2px 2px black" }}
               />
               <span className="flex-1 overflow-hidden text-ellipsis whitespace-nowrap text-white">
-                {userInfo.username}
+                {userInfo.nick_name}
               </span>
             </header>
           </Box>
@@ -60,22 +60,21 @@ function UserName() {
             <header className="bg-[#4D6367] px-4 py-2 flex items-center gap-2">
               <Avatar
                 name="Dan Abrahmov"
-                src={userInfo.profile_image}
+                src={userInfo.avatar}
                 border="2px solid #fff"
               />
               <span className="flex-1 overflow-hidden text-ellipsis whitespace-nowrap">
-                {userInfo.username}
+                {userInfo.nick_name}
               </span>
             </header>
             <main className="p-4">
               <h3>Email Address</h3>
-              <p className="text-[#45CAAA] font-normal">
-                {userInfo.login_email}
-              </p>
+              <p className="text-[#45CAAA] font-normal">{userInfo.email}</p>
               <h3 className="mt-2">Personal Achievements</h3>
               <p className="text-[#F2E03C] font-normal">
                 {" "}
-                <span className="text-[#45CAAA]">Best Score</span> 312
+                <span className="text-[#45CAAA]">Best Score</span>{" "}
+                {userInfo.score}
               </p>
               <div className="flex justify-center mt-12 mb-3">
                 <Image

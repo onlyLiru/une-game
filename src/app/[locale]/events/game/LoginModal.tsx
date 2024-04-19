@@ -47,7 +47,7 @@ function LoginModal() {
         onClose={onClose}
         isCentered
         closeOnEsc={!show}
-        closeOnOverlayClick={!show}
+        closeOnOverlayClick={false}
       >
         <AlertDialogOverlay>
           <AlertDialogContent w={{ base: "98vw", md: "600px" }}>

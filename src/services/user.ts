@@ -16,7 +16,7 @@ export function getEmailValidCode(email: string) {
 
 export function loginWithEmailSerices(data: { email: string; code: number }) {
   return request(emailLoginApiPath, {
-    method: "PUT",
+    method: "POST",
     body: data,
   });
 }

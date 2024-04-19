@@ -10,7 +10,7 @@ import {
   PinInputField,
 } from "@chakra-ui/react";
 import { useTranslations } from "next-intl";
-import { getEmailValidCode, loginWithEmailSerices } from "@/services/login";
+import { getEmailValidCode, loginWithEmailSerices } from "@/services/user";
 import { jwtHelper } from "@/utils/jwt";
 import { useFetchUser } from "@/apiHooks/useFetchUser";
 

@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import useUsreInfo from "@/recoil/useUserInfo";
 import useIsShowLoginModal from "@/recoil/useIsShowLoginModal";
+import { saveUserScore } from "@/services/user";
 
 function Content() {
   const { isLogin } = useUsreInfo();
@@ -18,6 +19,7 @@ function Content() {
       // 这里处理来自 iframe 的消息
       console.log("Received message from iframe:", event.data);
       if (!isNaN(event.data.message)) {
+        saveUserScore(event.data.message);
         alert(event.data.message);
       }
     };

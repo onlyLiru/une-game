@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { getUserInfo } from "@/services/login";
+import { getUserInfo } from "@/services/user";
 import useUsreInfo from "@/recoil/useUserInfo";
 
 export const useFetchUser = () => {

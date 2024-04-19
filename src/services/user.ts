@@ -1,6 +1,11 @@
 import request from "@/utils/request";
 import { jwtHelper } from "@/utils/jwt";
-import { sendEmailValidCode, emailLoginApiPath, userInfoApiPath } from "@/api";
+import {
+  sendEmailValidCode,
+  emailLoginApiPath,
+  userInfoApiPath,
+  saveScore,
+} from "@/api";
 
 export function getEmailValidCode(email: string) {
   return request(sendEmailValidCode, {
@@ -20,4 +25,11 @@ export function getUserInfo() {
   const token = jwtHelper.getToken();
   if (!token) return Promise.resolve();
   return request(userInfoApiPath);
+}
+
+export function saveUserScore(score: number) {
+  return request(saveScore, {
+    method: "POST",
+    body: { score },
+  });
 }

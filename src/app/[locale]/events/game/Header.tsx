@@ -35,7 +35,7 @@ function Header() {
           top: isPlayPage ? "-19rem" : "0",
         }}
       >
-        <section className="flex cursor-pointer">
+        <section className="flex">
           {loading ? (
             <Image
               className="flex-1"

@@ -76,13 +76,14 @@ function UserName() {
                 <span className="text-[#45CAAA]">Best Score</span>{" "}
                 {userInfo.score}
               </p>
-              <div className="flex justify-center mt-12 mb-3">
+              <div className="flex justify-center mt-12 mb-3 ">
                 <Image
                   src="https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events%2Fgame%2F20240415-153844.png"
                   w="7rem"
                   h="auto"
                   alt="login"
                   onClick={clearLoginData}
+                  cursor="pointer"
                 />
               </div>
             </main>

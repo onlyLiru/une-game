@@ -16,7 +16,7 @@ import {
 } from "@chakra-ui/react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
-import useIsShowLoginModal from "@/recoil/useIsShowLoginModal";
+import useForceLogin from "@/recoil/useForceLogin";
 import EmailLoginContent from "./EmailLoginContent";
 import useUsreInfo from "@/recoil/useUserInfo";
 
@@ -30,17 +30,17 @@ function LoginModal({
   const t = useTranslations("Web2Login");
   const { isOpen, onOpen, onClose } = useDisclosure();
   const cancelRef = React.useRef<any>();
-  const { show, setShow } = useIsShowLoginModal();
+  const { forceLoginState, setForceLoginState } = useForceLogin();
   const { isLogin } = useUsreInfo();
   const router = useRouter();
 
   useEffect(() => {
-    if (show) {
+    if (forceLoginState.showLoginModal) {
       onOpen();
     } else {
       onClose();
     }
-  }, [show, onOpen, onClose]);
+  }, [forceLoginState, forceLoginState.showLoginModal, onOpen, onClose]);
 
   return (
     <>
@@ -76,7 +76,7 @@ function LoginModal({
         leastDestructiveRef={cancelRef}
         onClose={onClose}
         isCentered
-        closeOnEsc={!show}
+        closeOnEsc={false}
         closeOnOverlayClick={false}
       >
         <AlertDialogOverlay>
@@ -84,14 +84,17 @@ function LoginModal({
             <AlertDialogHeader fontSize="lg" fontWeight="bold">
               {t("title")}
             </AlertDialogHeader>
-            {show ? (
+            {forceLoginState.noClose ? (
               <CloseButton
                 pos="absolute"
                 top=".5rem"
                 right=".5rem"
                 onClick={() => {
-                  setShow(false);
-                  router.push("/events/game");
+                  setForceLoginState({
+                    ...forceLoginState,
+                    showLoginModal: false,
+                  });
+                  forceLoginState.link && router.push(forceLoginState.link);
                 }}
               />
             ) : (

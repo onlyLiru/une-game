@@ -2,17 +2,22 @@
 
 import { useEffect, useRef } from "react";
 import useUsreInfo from "@/recoil/useUserInfo";
-import useIsShowLoginModal from "@/recoil/useIsShowLoginModal";
+import useForceLogin from "@/recoil/useForceLogin";
 import { saveUserScore } from "@/services/user";
 
 function Content() {
   const { isLogin } = useUsreInfo();
-  const { show, setShow } = useIsShowLoginModal();
+  const { forceLoginState, setForceLoginState } = useForceLogin();
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
   useEffect(() => {
-    setShow(!isLogin);
-  }, [isLogin, setShow]);
+    setForceLoginState({
+      ...forceLoginState,
+      showLoginModal: !isLogin,
+      noClose: !isLogin,
+      link: isLogin ? "" : "/events/game",
+    });
+  }, [isLogin]);
 
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {

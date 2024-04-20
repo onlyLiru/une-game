@@ -12,8 +12,10 @@ import {
   Button,
   useDisclosure,
   Image,
+  CloseButton,
 } from "@chakra-ui/react";
 import { useTranslations } from "next-intl";
+import { useRouter } from "next/navigation";
 import useIsShowLoginModal from "@/recoil/useIsShowLoginModal";
 import EmailLoginContent from "./EmailLoginContent";
 
@@ -21,17 +23,22 @@ function LoginModal({ children }: { children?: ReactNode }) {
   const t = useTranslations("Web2Login");
   const { isOpen, onOpen, onClose } = useDisclosure();
   const cancelRef = React.useRef<any>();
-  const { show } = useIsShowLoginModal();
+  const { show, setShow } = useIsShowLoginModal();
+  const router = useRouter();
 
   useEffect(() => {
-    show && onOpen();
-  }, [show, onOpen]);
+    if (show) {
+      onOpen();
+    } else {
+      onClose();
+    }
+  }, [show, onOpen, onClose]);
 
   return (
     <>
       {children ? (
         <div className="cursor-pointer" onClick={onOpen}>
-          children
+          {children}
         </div>
       ) : (
         <Image
@@ -60,7 +67,19 @@ function LoginModal({ children }: { children?: ReactNode }) {
             <AlertDialogHeader fontSize="lg" fontWeight="bold">
               {t("title")}
             </AlertDialogHeader>
-            {!show && <AlertDialogCloseButton />}
+            {show ? (
+              <CloseButton
+                pos="absolute"
+                top=".5rem"
+                right=".5rem"
+                onClick={() => {
+                  setShow(false);
+                  router.push("/events/game");
+                }}
+              />
+            ) : (
+              <AlertDialogCloseButton />
+            )}
             <AlertDialogBody>
               <EmailLoginContent onClose={onClose} />
             </AlertDialogBody>

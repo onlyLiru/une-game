@@ -21,12 +21,10 @@ import {
   Progress,
   Link,
 } from "@chakra-ui/react";
-import useUsreInfo from "@/recoil/useUserInfo";
 import { useRouter, redirect } from "next/navigation";
 import LoginModal from "./LoginModal";
 
 function Page() {
-  const { isLogin } = useUsreInfo();
   const [page, setPage] = useState<any>(1);
   const [ProgressBar, updateProgressBar] = useState<any>(0);
   const router = useRouter();
@@ -49,9 +47,7 @@ function Page() {
     }, interval);
   }
   const goPlay = () => {
-    if (isLogin) {
-      router.push("/events/game/play");
-    }
+    router.push("/events/game/play");
   };
   useEffect(() => {
     if (page === 1) {
@@ -79,7 +75,6 @@ function Page() {
       display="flex"
       justifyContent={"center"}
       alignItems={"center"}
-      onClick={goPlay}
     >
       PLAY
     </Box>
@@ -252,13 +247,9 @@ function Page() {
                 ml={"4%"}
                 mt="20px"
               ></Image>
-              {isLogin ? (
+              <LoginModal loggedInHandler={goPlay}>
                 <PlayButton />
-              ) : (
-                <LoginModal>
-                  <PlayButton />
-                </LoginModal>
-              )}
+              </LoginModal>
             </Box>
 
             <Box

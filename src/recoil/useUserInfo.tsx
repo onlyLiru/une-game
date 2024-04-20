@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useRecoilState, atom } from "recoil";
 
 export interface InterfaceUserInfo {
@@ -14,7 +15,11 @@ export const userInfoState = atom({
 
 function useUsreInfo() {
   const [userInfo, setInfo] = useRecoilState(userInfoState);
-  const isLogin = !!(userInfo && (userInfo as any)?.email);
+  const [isLogin, setLogin] = useState(!!(userInfo && userInfo?.email));
+
+  useEffect(() => {
+    setLogin(!!(userInfo && userInfo?.email));
+  }, [userInfo, userInfo?.email]);
 
   return {
     userInfo,

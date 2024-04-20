@@ -18,12 +18,20 @@ import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import useIsShowLoginModal from "@/recoil/useIsShowLoginModal";
 import EmailLoginContent from "./EmailLoginContent";
+import useUsreInfo from "@/recoil/useUserInfo";
 
-function LoginModal({ children }: { children?: ReactNode }) {
+function LoginModal({
+  children,
+  loggedInHandler,
+}: {
+  children?: ReactNode;
+  loggedInHandler?: Function;
+}) {
   const t = useTranslations("Web2Login");
   const { isOpen, onOpen, onClose } = useDisclosure();
   const cancelRef = React.useRef<any>();
   const { show, setShow } = useIsShowLoginModal();
+  const { isLogin } = useUsreInfo();
   const router = useRouter();
 
   useEffect(() => {
@@ -37,7 +45,16 @@ function LoginModal({ children }: { children?: ReactNode }) {
   return (
     <>
       {children ? (
-        <div className="cursor-pointer" onClick={onOpen}>
+        <div
+          className="cursor-pointer"
+          onClick={() => {
+            if (isLogin) {
+              loggedInHandler && loggedInHandler?.();
+            } else {
+              return onOpen();
+            }
+          }}
+        >
           {children}
         </div>
       ) : (

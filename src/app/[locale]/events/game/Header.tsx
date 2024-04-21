@@ -19,10 +19,11 @@ function Header() {
   const isPlayPage = regex.test(pathname);
 
   useEffect(() => {
-    !isLogin && !loading && fetchUser();
-  }, [fetchUser, isLogin, loading]);
+    fetchUser();
+  }, []);
 
   console.log("userInfo:", userInfo);
+  console.log("isLogin", isLogin);
 
   return (
     <>
@@ -34,7 +35,7 @@ function Header() {
           top: isPlayPage ? "-19rem" : "0",
         }}
       >
-        <section className="flex cursor-pointer">
+        <section className="flex">
           {loading ? (
             <Image
               className="flex-1"

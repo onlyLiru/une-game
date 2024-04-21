@@ -13,8 +13,7 @@ export const useFetchUser = () => {
       setLoading(true);
       const { data } = await getUserInfo();
       // 20230806update: 兼容web2登陆，有邮箱也认为是登陆成功
-      if (!data.wallet_address && !data.login_email)
-        throw Error("user data fetching error");
+      if (!data.email) throw Error("user data fetching error");
       setInfo(data);
       setLoading(false);
     } catch (error) {

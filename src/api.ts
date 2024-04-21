@@ -2,8 +2,8 @@ const prefix = "/api";
 
 export const testUrl = prefix + "/integral/v1/prize/all/info";
 export const testPostUrl = prefix + "/integral/v1/raffle/results";
-export const sendEmailValidCode = prefix + "/user/v1/central/email/code";
-export const emailLoginApiPath = prefix + "/user/v1/central/email/login";
-export const userInfoApiPath = prefix + "/user/v1/users/id";
+export const sendEmailValidCode = prefix + "/jump/v1/email/send";
+export const emailLoginApiPath = prefix + "/jump/v1/email/login";
+export const userInfoApiPath = prefix + "/jump/v1/account/info";
 export const saveScore = prefix + "/jump/v1/game/score";
 export const getBoard = prefix + "/jump/v1/game/board";

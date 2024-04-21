@@ -63,8 +63,8 @@ export async function CreateRequest(
 
   const localParam = getCookie(NEXT_LOCALE_COOKIE_KEY);
 
-  const locale = (opts.headers as any)[NEXT_LOCALE_KEY];
-  if (!locale) (opts.headers as any)[NEXT_LOCALE_KEY] = localParam || "en";
+  // const locale = (opts.headers as any)[NEXT_LOCALE_KEY];
+  // if (!locale) (opts.headers as any)[NEXT_LOCALE_KEY] = localParam || "en";
   try {
     const token = jwtHelper.getToken();
     if (!!token) {

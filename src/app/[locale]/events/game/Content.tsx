@@ -24,6 +24,7 @@ import {
 import useUsreInfo from "@/recoil/useUserInfo";
 import useIsShowLoginModal from "@/recoil/useIsShowLoginModal";
 import { useRouter, redirect } from "next/navigation";
+import { getBoardData } from "@/services/user";
 
 function Page() {
 
@@ -54,9 +55,14 @@ function Page() {
         console.log(isLogin)
         if (!isLogin) {
             setShow(!isLogin);
-        }else {
+        } else {
             router.push('/events/game/play');
         }
+    }
+    const initBoard = async () => {
+
+        const { data } = await getBoardData();
+        console.log(data)
     }
     useEffect(() => {
         if (page === 1) {
@@ -66,7 +72,7 @@ function Page() {
         } else if (page === 2) {
             countTo100InThreeSeconds();
         } else {
-
+            initBoard()
         }
     }, [page]);
     return (
@@ -245,7 +251,7 @@ function Page() {
                         bgSize="100% 100%"
                         bgPos="center"
                         w='38%'
-                        p={'4% 7% 4% 5%'}
+                        p={'4% 6% 4% 5%'}
                         display={'flex'}
                         flexWrap={'wrap'}
                     >
@@ -259,7 +265,7 @@ function Page() {
                             // display={'flex'}
                             // justifyContent={'space-around'}
                             // alignItems={'center'}
-                            p='2% 1% 4% 1%'
+                            p='3% 4% 4% 5%'
                             ml={'24%'}
 
                         >
@@ -289,7 +295,7 @@ function Page() {
                             // display={'flex'}
                             // justifyContent={'space-around'}
                             // alignItems={'center'}
-                            p='2% 1% 4% 1%'
+                            p='3% 4% 4% 5%'
 
                         >
                             <Box>1</Box>
@@ -318,7 +324,7 @@ function Page() {
                             // display={'flex'}
                             // justifyContent={'space-around'}
                             // alignItems={'center'}
-                            p='2% 1% 4% 1%'
+                            p='3% 4% 4% 5%'
 
                         >
                             <Box>1</Box>
@@ -347,7 +353,7 @@ function Page() {
                             display={'flex'}
                             justifyContent={'space-around'}
                             alignItems={'center'}
-                            p='2% 1% 4% 1%'
+                            p='2% 4% 4% 3%'
                         >
                             <Box>1</Box>
                             <Image
@@ -371,7 +377,7 @@ function Page() {
                             display={'flex'}
                             justifyContent={'space-around'}
                             alignItems={'center'}
-                            p='2% 1% 4% 1%'
+                            p='2% 4% 4% 3%'
                         >
                             <Box>1</Box>
                             <Image
@@ -395,7 +401,7 @@ function Page() {
                             display={'flex'}
                             justifyContent={'space-around'}
                             alignItems={'center'}
-                            p='2% 1% 4% 1%'
+                            p='2% 4% 4% 3%'
                         >
                             <Box>1</Box>
                             <Image
@@ -419,7 +425,7 @@ function Page() {
                             display={'flex'}
                             justifyContent={'space-around'}
                             alignItems={'center'}
-                            p='2% 1% 4% 1%'
+                            p='2% 4% 4% 3%'
                         >
                             <Box>1</Box>
                             <Image
@@ -443,7 +449,7 @@ function Page() {
                             display={'flex'}
                             justifyContent={'space-around'}
                             alignItems={'center'}
-                            p='2% 1% 4% 1%'
+                            p='2% 4% 4% 3%'
                         >
                             <Box>1</Box>
                             <Image

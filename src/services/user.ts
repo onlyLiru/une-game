@@ -5,6 +5,7 @@ import {
   emailLoginApiPath,
   userInfoApiPath,
   saveScore,
+  getBoard,
 } from "@/api";
 
 export function getEmailValidCode(email: string) {
@@ -31,5 +32,10 @@ export function saveUserScore(score: number) {
   return request(saveScore, {
     method: "POST",
     body: { score },
+  });
+}
+export function getBoardData() {
+  return request(getBoard, {
+    method: "GET",
   });
 }

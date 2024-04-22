@@ -27,19 +27,21 @@ function UserName() {
             <Image
               className="flex-1"
               src="https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events%2Fgame%2F20240416-105831.png"
-              h={{ md: "4rem", base: "3rem" }}
+              h={{ md: "2.5rem", base: "2rem" }}
               w="auto"
               alt="login"
             />
-            <header className="flex items-center gap-2 absolute top-0 left-4 right-5 bottom-2">
+            <header className="flex items-center gap-2 absolute md:top-0 top-[.1rem] md:left-3 left-2 right-5 bottom-2">
               <Avatar
                 name="Dan Abrahmov"
                 src={userInfo.avatar}
-                size={{ md: "sm", base: "xs" }}
+                size={{ md: "xs", base: "xs" }}
+                w={{ base: "1rem", md: "1.2rem" }}
+                h={{ base: "1rem", md: "1.2rem" }}
                 transform={"skewX(-12deg)"}
                 borderRadius="0"
-                border={{ md: "3px solid #fff", base: "2px solid #fff" }}
-                boxShadow={{ md: "3px 3px black", base: "2px 2px black" }}
+                border={{ md: "2px solid #fff", base: "2px solid #fff" }}
+                boxShadow={{ md: "2px 2px black", base: "2px 2px black" }}
               />
               <span className="flex-1 overflow-hidden text-ellipsis whitespace-nowrap text-white">
                 {userInfo.nick_name}
@@ -53,7 +55,7 @@ function UserName() {
             borderRadius: "0",
             boxShadow: "10px 10px black",
           }}
-          right="5rem"
+          right="3rem"
           w="16rem"
         >
           <div className="bg-[#394648] text-white font-bold">

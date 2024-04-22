@@ -62,7 +62,7 @@ function LoginModal({
           className="flex-1"
           src="https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events%2Fgame%2F20240415-145856.png"
           w="auto"
-          h={{ md: "4rem", base: "3rem" }}
+          h={{ md: "2.5rem", base: "2rem" }}
           alt="login"
           onClick={onOpen}
           id="LOGIN_TRIGGER_BUTTON"

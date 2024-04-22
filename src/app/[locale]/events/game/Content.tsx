@@ -115,7 +115,7 @@ function Page() {
     );
 
     return (
-        <Box textShadow={"0px 2px 0px #000000"} color="#fff" fontWeight={"900"}>
+        <Box textShadow={"0px 1px 0px #000000"} color="#fff" fontWeight={"700"}>
             {page === 1 && (
                 <Box
                     bg="#1a1a1a"
@@ -207,7 +207,7 @@ function Page() {
                     pt="4%"
                     pb="4%"
                     color="#fff"
-                    fontSize={'10px'}
+                    // fontSize={'10px'}
                     fontFamily={"Lantinghei"}
                 >
                     <Box w="80%" h="100%" m={"0 auto"} display={"flex"} color="#fff">

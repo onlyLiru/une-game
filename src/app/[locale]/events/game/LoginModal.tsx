@@ -81,7 +81,7 @@ function LoginModal({
         <AlertDialogOverlay>
           <AlertDialogContent
             w={{ base: "96%", md: "500px" }}
-            className="rotate90"
+            // className="rotate90"
           >
             <AlertDialogHeader fontSize="lg" fontWeight="bold">
               {t("title")}

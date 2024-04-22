@@ -38,3 +38,7 @@ body {
     transform: rotate(-90deg) !important;
   }
 }
+
+html {
+  font-size: 10px;
+}

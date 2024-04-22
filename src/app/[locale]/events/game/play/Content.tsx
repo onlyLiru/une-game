@@ -42,36 +42,6 @@ function Content() {
     }
   };
 
-  useEffect(() => {
-    const lockOrientation = () => {
-      const screen: any = window.screen;
-      if (screen.orientation) {
-        // 锁定屏幕方向为横向
-        (screen.orientation as any).lock("landscape");
-      } else if (screen.mozLockOrientation) {
-        // Firefox 浏览器支持的方法
-        screen.mozLockOrientation("landscape");
-      } else if (screen.msLockOrientation) {
-        // IE 浏览器支持的方法
-        screen.msLockOrientation("landscape");
-      }
-    };
-
-    lockOrientation(); // 锁定屏幕方向
-
-    // 组件卸载时解除屏幕方向锁定（可选）
-    return () => {
-      const screen: any = window.screen;
-      if (screen.orientation) {
-        screen.orientation.unlock();
-      } else if (screen.mozLockOrientation) {
-        screen.mozUnlockOrientation();
-      } else if (screen.msLockOrientation) {
-        screen.msUnlockOrientation();
-      }
-    };
-  }, []);
-
   return (
     <>
       <iframe

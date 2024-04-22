@@ -64,6 +64,7 @@ function UserName() {
                 name="Dan Abrahmov"
                 src={userInfo.avatar}
                 border="2px solid #fff"
+                size="sm"
               />
               <span className="flex-1 overflow-hidden text-ellipsis whitespace-nowrap">
                 {userInfo.nick_name}
@@ -81,7 +82,7 @@ function UserName() {
               <div className="flex justify-center mt-12 mb-3 ">
                 <Image
                   src="https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events%2Fgame%2F20240415-153844.png"
-                  w="7rem"
+                  w="6rem"
                   h="auto"
                   alt="login"
                   onClick={clearLoginData}

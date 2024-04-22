@@ -33,6 +33,7 @@ function Header() {
         ])}
         style={{
           top: isPlayPage ? "-19rem" : "0",
+          zIndex: 9,
         }}
       >
         <section className="flex">

@@ -2,8 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 @font-face {
-  font-family: 'Lantinghei';
-  src: url('/fonts/Lantinghei.ttf');
+  font-family: "Lantinghei";
+  src: url("/fonts/Lantinghei.ttf");
 }
 :root {
   --foreground-rgb: 0, 0, 0;

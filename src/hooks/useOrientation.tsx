@@ -44,7 +44,5 @@ export function useOrientation() {
 
   const isLandscape = orientation.type.startsWith("landscape");
 
-  console.log("orientation", orientation, isLandscape);
-
   return { ...orientation, isLandscape };
 }

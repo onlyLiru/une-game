@@ -7,6 +7,7 @@ import { saveUserScore } from "@/services/user";
 import { useOrientation } from "@/hooks/useOrientation";
 import { Button, Image } from "@chakra-ui/react";
 import screenfull from "screenfull";
+import styles from "./style.module.css";
 
 function Content() {
   const { isLogin } = useUsreInfo();
@@ -58,7 +59,7 @@ function Content() {
   };
 
   return (
-    <>
+    <div className={`w-full h-full ${styles.gameBox}`}>
       {/* <div className="fixed bottom-20 left-20 z-[9999]" onClick={fullscreen}>
         <Image
           src={
@@ -75,7 +76,7 @@ function Content() {
         className="w-full h-full"
         src="https://hyletic-aigc-service.s3.eu-central-1.amazonaws.com/aigc/data/v1/index.html"
       />
-    </>
+    </div>
   );
 }
 

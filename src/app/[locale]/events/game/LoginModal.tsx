@@ -80,7 +80,7 @@ function LoginModal({
         closeOnOverlayClick={false}
       >
         <AlertDialogOverlay>
-          <AlertDialogContent w={{ base: "98vw", md: "600px" }}>
+          <AlertDialogContent w={{ base: "96%", md: "500px" }}>
             <AlertDialogHeader fontSize="lg" fontWeight="bold">
               {t("title")}
             </AlertDialogHeader>

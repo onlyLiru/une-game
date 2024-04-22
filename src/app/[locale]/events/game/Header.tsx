@@ -29,11 +29,10 @@ function Header() {
     <>
       <header
         className={classnames([
-          "fixed z-0 top-0 left-0 right-0 flex justify-end md:px-[.5rem] px-2 py-[1rem]",
+          "fixed z-0 top-0 left-0 right-0 flex justify-end md:px-[4rem] px-2 py-[2rem]",
         ])}
         style={{
           top: isPlayPage ? "-19rem" : "0",
-          zIndex: 9,
         }}
       >
         <section className="flex">
@@ -41,7 +40,7 @@ function Header() {
             <Image
               className="flex-1"
               src="https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events%2Fgame%2F20240416-105831.png"
-              h={{ md: "2.5rem", base: "2rem" }}
+              h={{ md: "4rem", base: "3rem" }}
               w="auto"
               alt="login"
             />
@@ -52,7 +51,7 @@ function Header() {
             <Image
               className="flex-1"
               src="https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events%2Fgame%2F20240415-145913.png"
-              h={{ md: "2.5rem", base: "2rem" }}
+              h={{ md: "4rem", base: "3rem" }}
               w="auto"
               alt="login"
             />

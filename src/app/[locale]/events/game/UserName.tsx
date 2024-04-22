@@ -27,21 +27,19 @@ function UserName() {
             <Image
               className="flex-1"
               src="https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events%2Fgame%2F20240416-105831.png"
-              h={{ md: "2.5rem", base: "2rem" }}
+              h={{ md: "4rem", base: "3rem" }}
               w="auto"
               alt="login"
             />
-            <header className="flex items-center gap-2 absolute md:top-0 top-[.1rem] md:left-3 left-2 right-5 bottom-2">
+            <header className="flex items-center gap-2 absolute top-0 left-4 right-5 bottom-2">
               <Avatar
                 name="Dan Abrahmov"
                 src={userInfo.avatar}
-                size={{ md: "xs", base: "xs" }}
-                w={{ base: "1rem", md: "1.2rem" }}
-                h={{ base: "1rem", md: "1.2rem" }}
+                size={{ md: "sm", base: "xs" }}
                 transform={"skewX(-12deg)"}
                 borderRadius="0"
-                border={{ md: "2px solid #fff", base: "2px solid #fff" }}
-                boxShadow={{ md: "2px 2px black", base: "2px 2px black" }}
+                border={{ md: "3px solid #fff", base: "2px solid #fff" }}
+                boxShadow={{ md: "3px 3px black", base: "2px 2px black" }}
               />
               <span className="flex-1 overflow-hidden text-ellipsis whitespace-nowrap text-white">
                 {userInfo.nick_name}
@@ -55,7 +53,7 @@ function UserName() {
             borderRadius: "0",
             boxShadow: "10px 10px black",
           }}
-          right="3rem"
+          right="5rem"
           w="16rem"
         >
           <div className="bg-[#394648] text-white font-bold">
@@ -64,7 +62,6 @@ function UserName() {
                 name="Dan Abrahmov"
                 src={userInfo.avatar}
                 border="2px solid #fff"
-                size="sm"
               />
               <span className="flex-1 overflow-hidden text-ellipsis whitespace-nowrap">
                 {userInfo.nick_name}
@@ -82,7 +79,7 @@ function UserName() {
               <div className="flex justify-center mt-12 mb-3 ">
                 <Image
                   src="https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events%2Fgame%2F20240415-153844.png"
-                  w="6rem"
+                  w="7rem"
                   h="auto"
                   alt="login"
                   onClick={clearLoginData}

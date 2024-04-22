@@ -46,7 +46,7 @@ function Page() {
     handleOrientationChange()
   }, []);
   return (
-    <Box textShadow={"0px 2px 0px #000000"} color="#fff" fontWeight={"900"} fontFamily={"Lantinghei"} fontSize={'12px'}>
+    <Box textShadow={"0px 1px 0px #000000"} color="#fff" fontWeight={"700"} fontFamily={"Lantinghei"}>
       <Box
         bgImg={'https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events/game/gameBg.png'}
         bgRepeat="no-repeat"

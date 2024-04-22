@@ -6,3 +6,4 @@ export const sendEmailValidCode = prefix + "/jump/v1/email/send";
 export const emailLoginApiPath = prefix + "/jump/v1/email/login";
 export const userInfoApiPath = prefix + "/jump/v1/account/info";
 export const saveScore = prefix + "/jump/v1/game/score";
+export const getBoard = prefix + "/jump/v1/game/board";

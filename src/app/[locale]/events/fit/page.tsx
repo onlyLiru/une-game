@@ -192,7 +192,7 @@ function Page() {
             <br />
             COOKIES AND SIMILAR TECHNOLOGIES
             <br />
-            We and our partners collect and store information about users' interactions with unaffiliated websites and applications that use our technologies, including cookies and similar tracking technologies. This allows us to infer the presence of a common user or household behind multiple devices or browsers, for instance, and then link those browsers and devices into a device graph. We do so in order to
+            We and our partners collect and store information about users&apos; interactions with unaffiliated websites and applications that use our technologies, including cookies and similar tracking technologies. This allows us to infer the presence of a common user or household behind multiple devices or browsers, for instance, and then link those browsers and devices into a device graph. We do so in order to
             detect and prevent fraud;
             <br />
             improve the Service;

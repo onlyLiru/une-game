@@ -90,7 +90,7 @@ function Page() {
 
     }
     useEffect(() => {
-        initBoard()
+        // initBoard()
         handleOrientationChange()
     }, []);
 
@@ -304,8 +304,8 @@ function Page() {
                             flexWrap={"wrap"}
                         >
                             {
-                                boardInfo?.map(res => <>
-                                    {res?.rank === 1 && <Box
+                                boardInfo?.map((val: any) => <>
+                                    {val?.rank === 1 && <Box
                                         bgImg={
                                             "https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events/game/Rectangle%205%20%283%29.png"
                                         }
@@ -320,22 +320,22 @@ function Page() {
                                         p="3% 2% 4% 4%"
                                         ml={"24%"}
                                     >
-                                        <Box pos={'absolute'}>{res?.rank}</Box>
+                                        <Box pos={'absolute'}>{val?.rank}</Box>
                                         <Image
-                                            src={res?.avatar}
+                                            src={val?.avatar}
                                             w={"24%"}
                                             m={"0 auto"}
                                         ></Image>
-                                        <Box textAlign={"center"}>{res?.nick_name}</Box>
+                                        <Box textAlign={"center"}>{val?.nick_name}</Box>
                                         <Box display={"flex"} justifyContent={"center"}>
                                             <Image
                                                 src="https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events/game/Group%20205.png"
                                                 w={"18%"}
                                             ></Image>
-                                            <Box color='#FFC42C'>{res?.score}</Box>
+                                            <Box color='#FFC42C'>{val?.score}</Box>
                                         </Box>
                                     </Box>}
-                                    {res?.rank === 2 && <Box
+                                    {val?.rank === 2 && <Box
                                         bgImg={
                                             "https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events/game/Rectangle%205%20%282%29.png"
                                         }
@@ -349,22 +349,22 @@ function Page() {
                                         // alignItems={'center'}
                                         p="3% 2% 4% 4%"
                                     >
-                                        <Box pos={'absolute'}>{res?.rank}</Box>
+                                        <Box pos={'absolute'}>{val?.rank}</Box>
                                         <Image
-                                            src={res?.avatar}
+                                            src={val?.avatar}
                                             w={"24%"}
                                             m={"0 auto"}
                                         ></Image>
-                                        <Box textAlign={"center"}>{res?.nick_name}</Box>
+                                        <Box textAlign={"center"}>{val?.nick_name}</Box>
                                         <Box display={"flex"} justifyContent={"center"}>
                                             <Image
                                                 src="https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events/game/Group%20205.png"
                                                 w={"18%"}
                                             ></Image>
-                                            <Box color='#FFC42C'>{res?.score}</Box>
+                                            <Box color='#FFC42C'>{val?.score}</Box>
                                         </Box>
                                     </Box>}
-                                    {res?.rank === 3 && <Box
+                                    {val?.rank === 3 && <Box
                                         bgImg={
                                             "https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events/game/Rectangle%205%20%284%29.png"
                                         }
@@ -378,23 +378,23 @@ function Page() {
                                         // alignItems={'center'}
                                         p="3% 2% 4% 4%"
                                     >
-                                        <Box pos={'absolute'}>{res?.rank}</Box>
+                                        <Box pos={'absolute'}>{val?.rank}</Box>
                                         <Image
-                                            src={res?.avatar}
+                                            src={val?.avatar}
                                             w={"24%"}
                                             m={"0 auto"}
                                         ></Image>
-                                        <Box textAlign={"center"}>{res?.nick_name}</Box>
+                                        <Box textAlign={"center"}>{val?.nick_name}</Box>
                                         <Box display={"flex"} justifyContent={"center"}>
                                             <Image
                                                 src="https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events/game/Group%20205.png"
                                                 w={"18%"}
                                             ></Image>
-                                            <Box color='#FFC42C'>{res?.score}</Box>
+                                            <Box color='#FFC42C'>{val?.score}</Box>
                                         </Box>
                                     </Box>
                                     }
-                                    {(res?.rank !== 1 && res?.rank !== 2 && res?.rank !== 3) && <Box
+                                    {(val?.rank !== 1 && val?.rank !== 2 && val?.rank !== 3) && <Box
                                         bgImg={
                                             "https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events/game/Rectangle%205%20%281%29.png"
                                         }
@@ -408,17 +408,17 @@ function Page() {
                                         alignItems={"center"}
                                         p="2% 4% 4% 2%"
                                     >
-                                        <Box>{res?.rank}</Box>
+                                        <Box>{val?.rank}</Box>
                                         <Image
-                                            src={res?.avatar}
+                                            src={val?.avatar}
                                             h={"100%"}
                                         ></Image>
-                                        <Box>{res?.nick_name}</Box>
+                                        <Box>{val?.nick_name}</Box>
                                         <Image
                                             src="https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events/game/Group%20205.png"
                                             h={"100%"}
                                         ></Image>
-                                        <Box>{res?.score}</Box>
+                                        <Box>{val?.score}</Box>
                                     </Box>
                                     }
                                 </>)

@@ -9,6 +9,7 @@ import useUsreInfo from "@/recoil/useUserInfo";
 import { usePathname } from "next/navigation";
 import classnames from "classnames";
 import Link from "next/link";
+import styles from "./index.module.css";
 
 function Header() {
   const regex = /events\/game\/play$/;
@@ -29,10 +30,11 @@ function Header() {
     <>
       <header
         className={classnames([
-          "fixed z-0 top-0 left-0 right-0 flex justify-end md:px-[4rem] px-2 py-[2rem]",
+          "fixed z-30 top-0 left-0 right-0 flex justify-end md:px-[2rem] px-2 py-1",
+          // styles.headerBox,
         ])}
         style={{
-          top: isPlayPage ? "-19rem" : "0",
+          visibility: isPlayPage ? "hidden" : "visible",
         }}
       >
         <section className="flex">

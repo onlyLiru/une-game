@@ -53,7 +53,7 @@ function UserName() {
             borderRadius: "0",
             boxShadow: "10px 10px black",
           }}
-          right="5rem"
+          right={{ base: "1rem", md: "5rem" }}
           w="16rem"
         >
           <div className="bg-[#394648] text-white font-bold">

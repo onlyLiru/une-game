@@ -32,3 +32,13 @@ body {
     text-wrap: balance;
   }
 }
+
+@media screen and (min-width: 320px) and (max-width: 767px) and (orientation: portrait) {
+  .rotate90 {
+    transform: rotate(-90deg) !important;
+  }
+}
+
+html {
+  font-size: 14px;
+}

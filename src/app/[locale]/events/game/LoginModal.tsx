@@ -69,7 +69,6 @@ function LoginModal({
           cursor="pointer"
         />
       )}
-
       <AlertDialog
         motionPreset="slideInBottom"
         isOpen={isOpen}
@@ -80,7 +79,10 @@ function LoginModal({
         closeOnOverlayClick={false}
       >
         <AlertDialogOverlay>
-          <AlertDialogContent w={{ base: "96%", md: "500px" }}>
+          <AlertDialogContent
+            w={{ base: "96%", md: "500px" }}
+            className={forceLoginState.showLoginModal ? "rotate90" : ""}
+          >
             <AlertDialogHeader fontSize="lg" fontWeight="bold">
               {t("title")}
             </AlertDialogHeader>

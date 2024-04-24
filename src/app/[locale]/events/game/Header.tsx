@@ -10,6 +10,7 @@ import { usePathname } from "next/navigation";
 import classnames from "classnames";
 import Link from "next/link";
 import styles from "./index.module.css";
+import useMade from "@/recoil/useMade";
 
 function Header() {
   const regex = /events\/game\/play$/;
@@ -17,6 +18,7 @@ function Header() {
   const { fetchUser, loading } = useFetchUser();
   const { userInfo, isLogin } = useUsreInfo();
 
+  const { page, setPage } = useMade();
   const isPlayPage = regex.test(pathname);
 
   useEffect(() => {
@@ -49,15 +51,16 @@ function Header() {
           ) : (
             <>{isLogin ? <UserName /> : <Login />}</>
           )}
-          <Link href="/events/fit">
+          {/* <Link > */}
             <Image
               className="flex-1"
               src="https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events%2Fgame%2F20240415-145913.png"
               h={{ md: "4rem", base: "3rem" }}
               w="auto"
               alt="login"
+              onClick={()=> setPage(4)}
             />
-          </Link>
+          {/* </Link> */}
         </section>
       </header>
     </>

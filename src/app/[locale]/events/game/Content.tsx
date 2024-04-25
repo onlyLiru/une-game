@@ -517,7 +517,7 @@ function Page() {
                                         m={'0 auto'}
                                         alt=""
                                     ></Image>
-                                    Opencoord
+                                    Hyletic AI
                                 </Box>
                             </Box>
                         </Box>
@@ -576,7 +576,7 @@ function Page() {
                                         m={'0 auto'}
                                         alt=""
                                     ></Image>
-                                    Opencoord
+                                    Hyletic AI
                                 </Box>
                             </Box>
                             {/* <Box

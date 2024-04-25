@@ -26,6 +26,7 @@ import {
 import { useRouter, redirect } from "next/navigation";
 import { getBoardData } from "@/services/user";
 import LoginModal from "./LoginModal";
+import useCopy from '@/hooks/useCopy';
 
 import useMade from "@/recoil/useMade";
 function Page() {
@@ -35,13 +36,14 @@ function Page() {
     const [ProgressBar, updateProgressBar] = useState<any>(0);
     const [boardInfo, setBoardInfo] = useState<any>([]);
     const router = useRouter();
+    const toast = useToast();
 
     const { page, setPage } = useMade();
-    
-  const { isOpen, onOpen, onClose } = useDisclosure()
-  const { isOpen: openContact, onOpen: onContact, onClose: closeContact } = useDisclosure({
-    id: 'Contact',
-  })
+
+    const { isOpen, onOpen, onClose } = useDisclosure()
+    const { isOpen: openContact, onOpen: onContact, onClose: closeContact } = useDisclosure({
+        id: 'Contact',
+    })
     function countTo100InThreeSeconds() {
         let currentNumber = 1;
         const targetNumber = 100;
@@ -60,6 +62,7 @@ function Page() {
             }
         }, interval);
     }
+    const [, setCopy] = useCopy();
     const goPlay = () => {
         router.push("/events/game/play");
     };
@@ -90,7 +93,7 @@ function Page() {
     }, [page]);
 
 
-    
+
 
     const PlayButton = () => (
         <Box
@@ -284,6 +287,7 @@ function Page() {
                                 // h={'56%'}
                                 // ml={"4%"}
                                 mt="22%"
+                                alt=""
                             ></Image>
                             <LoginModal loggedInHandler={goPlay}>
                                 <PlayButton />
@@ -298,12 +302,25 @@ function Page() {
                             bgSize="100% 100%"
                             bgPos="center"
                             w="90%"
-                            p={"4% 2%"}
+                            p={"6% 2%"}
                             m='0 auto'
                             mt='10%'
                             display={"flex"}
                             flexWrap={"wrap"}
                         >
+                            <Box
+                                bgImg={
+                                    "https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events/game/Rectangle%205%20%285%29.png"
+                                }
+                                bgRepeat="no-repeat"
+                                bgSize="100% 100%"
+                                bgPos="center"
+                                padding={'2%'}
+                                m='0 auto'
+                                mt='-10%'
+                            >
+                                Leaderboards
+                            </Box>
                             {
                                 boardInfo?.map((val: any) => <>
                                     {val?.rank === 1 && <Box
@@ -320,18 +337,21 @@ function Page() {
                                         // alignItems={'center'}
                                         p="3% 2% 4% 4%"
                                         ml={"24%"}
+                                        mt='5%'
                                     >
                                         <Box pos={'absolute'}>{val?.rank}</Box>
                                         <Image
                                             src={val?.avatar}
                                             w={"24%"}
                                             m={"0 auto"}
+                                            alt=""
                                         ></Image>
                                         <Box textAlign={"center"}>{val?.nick_name}</Box>
                                         <Box display={"flex"} justifyContent={"center"}>
                                             <Image
                                                 src="https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events/game/Group%20205.png"
                                                 w={"18%"}
+                                                alt=""
                                             ></Image>
                                             <Box color='#FFC42C'>{val?.score}</Box>
                                         </Box>
@@ -355,12 +375,14 @@ function Page() {
                                             src={val?.avatar}
                                             w={"24%"}
                                             m={"0 auto"}
+                                            alt=""
                                         ></Image>
                                         <Box textAlign={"center"}>{val?.nick_name}</Box>
                                         <Box display={"flex"} justifyContent={"center"}>
                                             <Image
                                                 src="https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events/game/Group%20205.png"
                                                 w={"18%"}
+                                                alt=""
                                             ></Image>
                                             <Box color='#FFC42C'>{val?.score}</Box>
                                         </Box>
@@ -384,12 +406,14 @@ function Page() {
                                             src={val?.avatar}
                                             w={"24%"}
                                             m={"0 auto"}
+                                            alt=""
                                         ></Image>
                                         <Box textAlign={"center"}>{val?.nick_name}</Box>
                                         <Box display={"flex"} justifyContent={"center"}>
                                             <Image
                                                 src="https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events/game/Group%20205.png"
                                                 w={"18%"}
+                                                alt=""
                                             ></Image>
                                             <Box color='#FFC42C'>{val?.score}</Box>
                                         </Box>
@@ -414,6 +438,7 @@ function Page() {
                                             <Image
                                                 src={val?.avatar}
                                                 w={'10%'}
+                                                alt=""
                                             ></Image>
                                             <Box>{val?.nick_name}</Box>
                                         </Box>
@@ -422,6 +447,7 @@ function Page() {
                                             <Image
                                                 src="https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events/game/Group%20205.png"
                                                 h={"100%"}
+                                                alt=""
                                             ></Image>
                                             <Box>{val?.score}</Box>
                                         </Box>
@@ -440,8 +466,25 @@ function Page() {
                             w="90%"
                             m='0 auto'
                             mt='10%'
+                            pt='10%'
                         // h='100%'
                         >
+
+                            <Box
+                                bgImg={
+                                    "https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events/game/Rectangle%205%20%285%29.png"
+                                }
+                                bgRepeat="no-repeat"
+                                bgSize="100% 100%"
+                                bgPos="center"
+                                padding={'2%'}
+                                m='0 auto'
+                                w='45%'
+                                textAlign='center'
+                                mt='-13%'
+                            >
+                                Join the Community
+                            </Box>
                             <Box
                                 display={"flex"}
                                 justifyContent={"space-around"}
@@ -456,6 +499,7 @@ function Page() {
                                         src="https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events/game/Group%20225.png"
                                         w="40%"
                                         m={'0 auto'}
+                                        alt=""
                                     ></Image>
                                     UneMeta
                                 </Box>
@@ -464,6 +508,7 @@ function Page() {
                                         src="https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events/game/Group%20227.png"
                                         w="40%"
                                         m={'0 auto'}
+                                        alt=""
                                     ></Image>
                                     Opencoord
                                 </Box>
@@ -480,8 +525,54 @@ function Page() {
                             w="90%"
                             m='0 auto'
                             mt='10%'
+                            pt='10%'
                         >
+
                             <Box
+                                bgImg={
+                                    "https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events/game/Rectangle%205%20%285%29.png"
+                                }
+                                bgRepeat="no-repeat"
+                                bgSize="100% 100%"
+                                bgPos="center"
+                                padding={'2%'}
+                                m='0 auto'
+                                w='40%'
+                                textAlign='center'
+                                mt='-13%'
+                            >
+                                Know about US
+                            </Box>
+
+                            <Box
+                                display={"flex"}
+                                justifyContent={"space-around"}
+                                w="80%"
+                                m="0 auto"
+                                // mt='60px'
+                                pt="4%"
+                                pb="4%"
+                            >
+                                <Box textAlign={'center'} onClick={() => { window.location.href = 'https://www.unemeta.com'; }}>
+                                    <Image
+                                        src="https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events/game/Group%20227%20%281%29.png"
+                                        w="40%"
+                                        m={'0 auto'}
+                                        alt=""
+                                    ></Image>
+                                    UneMeta
+                                </Box>
+                                <Box textAlign={'center'} onClick={() => { window.location.href = 'http://hyletic.ai'; }} >
+                                    <Image
+                                        src="https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events/game/Group%20227%20%283%29.png"
+                                        w="50%"
+                                        m={'0 auto'}
+                                        alt=""
+                                    ></Image>
+                                    Opencoord
+                                </Box>
+                            </Box>
+                            {/* <Box
                                 display={"flex"}
                                 justifyContent={"space-around"}
                                 m="0 auto"
@@ -494,10 +585,11 @@ function Page() {
                                         src="https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events/game/Group%20227%20%281%29.png"
                                         w="40%"
                                         m={'0 auto'}
+                                        alt=""
                                     ></Image>
                                     UneMeta
                                 </Box>
-                            </Box>
+                            </Box> */}
                         </Box>
 
                     </Box>
@@ -518,7 +610,7 @@ function Page() {
                     pb='10%'
                 >
                     <Box
-                    
+
                         w="90%"
                         pos={'absolute'}
                         top={'4%'}
@@ -534,15 +626,17 @@ function Page() {
                             // pos={'absolute'}
                             // top={'4%'}
                             // left={'4%'}
+                            alt=""
                             onClick={() => setPage(3)}
                         ></Image>
-                        <Box>设置</Box>
+                        <Box>Setting</Box>
                         <Image
                             src="https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events/game/Group%20210.png"
                             w="14%"
                             // pos={'absolute'}
                             // top={'4%'}
                             // left={'4%'}
+                            alt=""
                             onClick={() => setPage(3)}
                         ></Image>
                     </Box>
@@ -592,22 +686,23 @@ function Page() {
                 >
                     <ModalOverlay />
                     <ModalContent
-                    
-                    bgImg={'https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events/game/Rectangle%20101.png'}
-                    bgRepeat="no-repeat"
-                    bgSize="100% 100%"
-                    m='6%'
-                    pb='6%'
-                    color='#fff'
+
+                        bgImg={'https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events/game/Rectangle%20101.png'}
+                        bgRepeat="no-repeat"
+                        bgSize="100% 100%"
+                        m='6%'
+                        pb='6%'
+                        color='#fff'
                     >
                         <ModalHeader>Contact us</ModalHeader>
-                        
+
                         <Image
                             src="https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events/game/Group%20225%20%281%29.png"
                             w="8%"
                             pos={'absolute'}
                             top={'2%'}
                             right={'2%'}
+                            alt=""
                             onClick={closeContact}
                         ></Image>
                         <ModalBody>
@@ -616,12 +711,22 @@ function Page() {
                                 <Image
                                     src="https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events/game/Frame%20163310.png"
                                     w="20%"
+                                    alt=""
                                     onClick={() => { window.location.href = 'https://twitter.com/UneWeb3'; }}
                                 ></Image>
                                 <Image
                                     src="https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events/game/Union.png"
                                     w="20%"
-                                    // onClick={onClose}
+                                    alt=""
+                                    onClick={async () => {
+                                      await setCopy('info@unemeta.com');
+                                      toast({
+                                        status: 'success',
+                                        title: 'Address copied',
+                                        variant: 'subtle',
+                                      });
+                                    }}
+                                // onClick={onClose}
                                 ></Image>
                             </Box>
                         </ModalBody>
@@ -634,13 +739,13 @@ function Page() {
                     scrollBehavior={'inside'}
                 >
                     <ModalOverlay />
-                    <ModalContent 
-                    bgImg={'https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events/game/Rectangle%20101.png'}
-                    bgRepeat="no-repeat"
-                    bgSize="100% 100%"
-                    m='6%'
-                    pb='6%'
-                    color='#fff'
+                    <ModalContent
+                        bgImg={'https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events/game/Rectangle%20101.png'}
+                        bgRepeat="no-repeat"
+                        bgSize="100% 100%"
+                        m='6%'
+                        pb='6%'
+                        color='#fff'
                     >
                         <ModalHeader>Privacy Policy</ModalHeader>
                         {/* <ModalCloseButton /> */}
@@ -650,6 +755,7 @@ function Page() {
                             pos={'absolute'}
                             top={'2%'}
                             right={'2%'}
+                            alt=""
                             onClick={onClose}
                         ></Image>
                         <ModalBody>
@@ -690,7 +796,7 @@ function Page() {
                             <br />
                             <br />
                             <Text fontSize='18px' fontWeight='700'>HOW DO WE PROTECT YOUR DATA</Text>
-                            
+
                             <br />
                             Security Safeguards.
                             <br />
@@ -704,7 +810,7 @@ function Page() {
                             <br />
                             <br />
                             <Text fontSize='18px' fontWeight='700'>COOKIES AND SIMILAR TECHNOLOGIES</Text>
-                            
+
                             <br />
                             We and our partners collect and store information about users&apos; interactions with unaffiliated websites and applications that use our technologies, including cookies and similar tracking technologies. This allows us to infer the presence of a common user or household behind multiple devices or browsers, for instance, and then link those browsers and devices into a device graph. We do so in order to
                             detect and prevent fraud;

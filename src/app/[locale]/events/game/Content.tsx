@@ -22,6 +22,7 @@ import {
     Tooltip,
     Progress,
     Link,
+    Spinner
 } from "@chakra-ui/react";
 import { useRouter, redirect } from "next/navigation";
 import { getBoardData } from "@/services/user";
@@ -35,6 +36,7 @@ function Page() {
     // const [page, setPage] = useState<any>(3);
     const [ProgressBar, updateProgressBar] = useState<any>(0);
     const [boardInfo, setBoardInfo] = useState<any>([]);
+    const [play, setPlay] = useState<any>(false);
     const router = useRouter();
     const toast = useToast();
 
@@ -64,7 +66,10 @@ function Page() {
     }
     const [, setCopy] = useCopy();
     const goPlay = () => {
-        router.push("/events/game/play");
+        if (!play) {
+            router.push("/events/game/play");
+            setPlay(true)
+        }
     };
     //   const goPlay = () => {
     //     console.log(isLogin)
@@ -112,7 +117,9 @@ function Page() {
             justifyContent={"center"}
             alignItems={"center"}
         >
-            PLAY
+            {play ? <Spinner size='md' /> : 'PLAY'}
+            
+            {/*  */}
         </Box>
     );
 

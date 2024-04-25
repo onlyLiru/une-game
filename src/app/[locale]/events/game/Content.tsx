@@ -185,7 +185,7 @@ function Page() {
                             transition={"all .1s linear"}
                             pos={"relative"}
                         >
-                            <Box pos={"absolute"} right={"20px"}>{`${ProgressBar}%`}</Box>
+                            <Box pos={"absolute"} right={"20px"} top='8px'>{`${ProgressBar}%`}</Box>
                         </Box>
                     </Box>
                     <Image

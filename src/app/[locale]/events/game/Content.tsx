@@ -134,7 +134,7 @@ function Page() {
                     justifyContent={"center"}
                     alignItems={"center"}
                 >
-                    <Image w='50%' src="https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events/game/Frame%20198%20%281%29.png"></Image>
+                    <Image w='50%' src="https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events/game/Frame%20198%20%282%29.png"></Image>
                 </Box>
             )}
             {page === 2 && (

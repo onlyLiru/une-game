@@ -510,14 +510,14 @@ function Page() {
                                     ></Image>
                                     UneMeta
                                 </Box>
-                                <Box textAlign={'center'} onClick={() => { window.location.href = 'http://hyletic.ai'; }} >
+                                <Box textAlign={'center'} onClick={() => { window.location.href = 'https://x.com/akasha2024?t=k6CNKINPmB0kSZYShLpBRA&s=09'; }} >
                                     <Image
                                         src="https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events/game/Group%20227.png"
                                         w="40%"
                                         m={'0 auto'}
                                         alt=""
                                     ></Image>
-                                    Hyletic AI
+                                    Akasha
                                 </Box>
                             </Box>
                         </Box>
@@ -735,6 +735,15 @@ function Page() {
                                     }}
                                 // onClick={onClose}
                                 ></Image>
+                            </Box>
+                            <Box mt='15px'>
+                            <Text fontSize='18px' fontWeight='700' m='8px 0'>Know about UneMeta:</Text>
+                            {/* <br /> */}
+                            UneMetaan is an IP-centric community layer breaking boundaries and forging unforgettable IPs with the power of community and cutting-edge AI!
+                            <br />
+                            <Text fontSize='18px' fontWeight='700'  m='8px 0'>Know about Hyletic AI ：</Text>
+                            {/* <br /> */}
+                            HyleticAI is an End-to-End Platform for AI models, datasets, and applications powering web3 Innovations.
                             </Box>
                         </ModalBody>
                     </ModalContent>

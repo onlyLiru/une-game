@@ -28,14 +28,17 @@ import { useRouter, redirect } from "next/navigation";
 import { getBoardData } from "@/services/user";
 import LoginModal from "./LoginModal";
 import useCopy from '@/hooks/useCopy';
+import useUsreInfo from "@/recoil/useUserInfo";
 
 import useMade from "@/recoil/useMade";
 function Page() {
+    const { isLogin } = useUsreInfo();
     // const [width, setWidth] = useState<any>(0);
     // const [height, setHeight] = useState<any>(0);
     // const [page, setPage] = useState<any>(3);
     const [ProgressBar, updateProgressBar] = useState<any>(0);
     const [boardInfo, setBoardInfo] = useState<any>([]);
+    const [myInfo, setMyInfo] = useState<any>({});
     const [play, setPlay] = useState<any>(false);
     const router = useRouter();
     const toast = useToast();
@@ -84,6 +87,7 @@ function Page() {
         const { data } = await getBoardData();
         console.log(data)
         setBoardInfo(data?.board_info)
+        setMyInfo(data?.my_info)
     }
     useEffect(() => {
         if (page === 1) {
@@ -95,9 +99,11 @@ function Page() {
         } else {
             initBoard()
         }
-    }, [page]);
+    }, [page, isLogin]);
 
-
+    function checkIfDataExists(array: any[], data: { nick_name: any; }) {
+        return array.some((item: { nick_name: any; }) => item?.nick_name === data?.nick_name);
+    }
 
 
     const PlayButton = () => (
@@ -118,7 +124,7 @@ function Page() {
             alignItems={"center"}
         >
             {play ? <Spinner size='md' /> : 'PLAY'}
-            
+
             {/*  */}
         </Box>
     );
@@ -428,7 +434,7 @@ function Page() {
                                     }
                                     {(val?.rank !== 1 && val?.rank !== 2 && val?.rank !== 3) && <Box
                                         bgImg={
-                                            "https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events/game/Rectangle%205%20%281%29.png"
+                                            val?.nick_name === myInfo?.nick_name ? 'https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events/game/Rectangle%205%20%286%29.png' : "https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events/game/Rectangle%205%20%281%29.png"
                                         }
                                         bgRepeat="no-repeat"
                                         bgSize="100% 100%"
@@ -447,7 +453,7 @@ function Page() {
                                                 w={'10%'}
                                                 alt=""
                                             ></Image>
-                                            <Box>{val?.nick_name}</Box>
+                                            <Box  ml='4px'>{val?.nick_name}</Box>
                                         </Box>
                                         <Box display={'flex'} alignItems={"center"} w='30%'>
 
@@ -456,12 +462,48 @@ function Page() {
                                                 h={"100%"}
                                                 alt=""
                                             ></Image>
-                                            <Box>{val?.score}</Box>
+                                            <Box color='#FFC42C' ml='4px'>{val?.score}</Box>
                                         </Box>
                                     </Box>
                                     }
                                 </>)
                             }
+                            <>
+                                {(isLogin && !checkIfDataExists(boardInfo, myInfo)) && <Box
+                                    bgImg={
+                                        "https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events/game/Rectangle%205%20%286%29.png"
+                                    }
+                                    bgRepeat="no-repeat"
+                                    bgSize="100% 100%"
+                                    bgPos="center"
+                                    w="100%"
+                                    // h="8%"
+                                    display={"flex"}
+                                    justifyContent={"space-around"}
+                                    alignItems={"center"}
+                                    p="4% 4% 6% 5%"
+                                >
+                                    <Box w={'10%'}>{myInfo?.rank || '-'}</Box>
+                                    <Box display={'flex'} alignItems={"center"} flex='1'>
+                                        <Image
+                                            src={myInfo?.avatar}
+                                            w={'10%'}
+                                            alt=""
+                                        ></Image>
+                                        <Box  ml='4px'>{myInfo?.nick_name}</Box>
+                                    </Box>
+                                    <Box display={'flex'} alignItems={"center"} w='30%'>
+
+                                        <Image
+                                            src="https://unemeta-1322481783.cos.ap-tokyo.myqcloud.com/events/game/Group%20205.png"
+                                            h={"100%"}
+                                            alt=""
+                                        ></Image>
+                                        <Box color='#FFC42C' ml='4px'>{myInfo?.score}</Box>
+                                    </Box>
+                                </Box>
+                                }
+                            </>
                         </Box>
                         <Box
                             bgImg={
@@ -726,24 +768,24 @@ function Page() {
                                     w="20%"
                                     alt=""
                                     onClick={async () => {
-                                      await setCopy('info@unemeta.com');
-                                      toast({
-                                        status: 'success',
-                                        title: 'Address copied',
-                                        variant: 'subtle',
-                                      });
+                                        await setCopy('info@unemeta.com');
+                                        toast({
+                                            status: 'success',
+                                            title: 'Address copied',
+                                            variant: 'subtle',
+                                        });
                                     }}
                                 // onClick={onClose}
                                 ></Image>
                             </Box>
                             <Box mt='15px'>
-                            <Text fontSize='18px' fontWeight='700' m='8px 0'>Know about UneMeta:</Text>
-                            {/* <br /> */}
-                            UneMetaan is an IP-centric community layer breaking boundaries and forging unforgettable IPs with the power of community and cutting-edge AI!
-                            <br />
-                            <Text fontSize='18px' fontWeight='700'  m='8px 0'>Know about Hyletic AI ：</Text>
-                            {/* <br /> */}
-                            HyleticAI is an End-to-End Platform for AI models, datasets, and applications powering web3 Innovations.
+                                <Text fontSize='18px' fontWeight='700' m='8px 0'>Know about UneMeta:</Text>
+                                {/* <br /> */}
+                                UneMetaan is an IP-centric community layer breaking boundaries and forging unforgettable IPs with the power of community and cutting-edge AI!
+                                <br />
+                                <Text fontSize='18px' fontWeight='700' m='8px 0'>Know about Hyletic AI ：</Text>
+                                {/* <br /> */}
+                                HyleticAI is an End-to-End Platform for AI models, datasets, and applications powering web3 Innovations.
                             </Box>
                         </ModalBody>
                     </ModalContent>

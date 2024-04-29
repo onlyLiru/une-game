@@ -74,7 +74,8 @@ function Content() {
       </div> */}
       <iframe
         className="w-full h-full"
-        src="https://hyletic-aigc-service.s3.eu-central-1.amazonaws.com/aigc/data/v1/index.html"
+        // src="https://hyletic-aigc-service.s3.eu-central-1.amazonaws.com/aigc/data/v1/index.html"
+        src="https://hyletic-aigc-service.s3.eu-central-1.amazonaws.com/aigc/data/v2/index.html"
       />
     </div>
   );
